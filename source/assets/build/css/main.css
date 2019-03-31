@@ -5073,12 +5073,12 @@ a.list-item {
   padding: 0.5em 0.75em;
 }
 .menu-list a:hover {
-  background-color: whitesmoke;
+  background-color: #ffd1da;
   color: #363636;
 }
 .menu-list a.is-active {
-  background-color: #3273dc;
-  color: #fff;
+  background-color: #FFFFFF;
+  color: #ff3860;
 }
 .menu-list li ul {
   border-left: 1px solid #dbdbdb;
@@ -9179,4 +9179,12 @@ label.panel-block:hover {
 
 .feature-icon {
   height: 64px;
+}
+
+.docs-wrapper aside {
+  padding: 1rem 0 1rem 3rem;
+}
+.docs-wrapper .content {
+  padding: 1rem 3rem 1rem 0;
+  min-height: 100%;
 }

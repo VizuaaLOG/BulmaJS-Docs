@@ -2,3 +2,7 @@ $primary: #ff3860;
 $primary-darker: darken($primary, 10%);
 
 $title-weight: 400;
+
+$menu-item-hover-background-color: lighten($primary, 30%);
+$menu-item-active-color: $primary;
+$menu-item-active-background-color: #FFFFFF;

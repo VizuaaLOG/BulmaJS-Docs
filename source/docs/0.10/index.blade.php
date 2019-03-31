@@ -1,0 +1,1 @@
+<script>window.location.href += 'getting-started/introduction';</script>

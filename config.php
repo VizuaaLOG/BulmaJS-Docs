@@ -12,5 +12,8 @@ return [
         '0.7',
     ],
     'released_version' => '0.10.0',
-    'documentation_version' => '0.10'
+    'documentation_version' => '0.10',
+    'versionUrl' => function() {
+        return str_replace('.', '-', $page->version);
+    }
 ];
