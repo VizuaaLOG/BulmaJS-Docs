@@ -12543,10 +12543,10 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "./source/_assets/js/main.js":
-/*!***********************************!*\
-  !*** ./source/_assets/js/main.js ***!
-  \***********************************/
+/***/ "./source/_assets/js/fontawesome.js":
+/*!******************************************!*\
+  !*** ./source/_assets/js/fontawesome.js ***!
+  \******************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -12567,6 +12567,80 @@ _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["library"].add(_f
 _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faDollarSign"]);
 _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faBan"]);
 _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["dom"].watch();
+
+/***/ }),
+
+/***/ "./source/_assets/js/helpers.js":
+/*!**************************************!*\
+  !*** ./source/_assets/js/helpers.js ***!
+  \**************************************/
+/*! exports provided: getSelectedVersion, loadScript */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSelectedVersion", function() { return getSelectedVersion; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loadScript", function() { return loadScript; });
+/**
+ * Returns the selected documentation version from the URL
+ * 
+ * @returns {String}
+ */
+function getSelectedVersion() {
+  var regex = /documentation\/(?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)/;
+  var url = window.location.href;
+  var match = url.match(regex);
+
+  if (!match) {
+    return 'master';
+  }
+
+  return match[1] + '.' + match[3];
+}
+/**
+ * Load a script into the document.
+ * 
+ * @param {String} url The path to load
+ * @param {Function} onload The function to call when the script has loaded
+ * @param {Function} onerror The function to call if the script errors during load
+ * 
+ * @returns {void}
+ */
+
+function loadScript(url, onload, onerror) {
+  var script = document.createElement('script');
+  script.setAttribute('src', url);
+  script.onerror = onerror;
+  script.onload = onload;
+  document.head.appendChild(script);
+}
+
+/***/ }),
+
+/***/ "./source/_assets/js/main.js":
+/*!***********************************!*\
+  !*** ./source/_assets/js/main.js ***!
+  \***********************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers */ "./source/_assets/js/helpers.js");
+
+
+__webpack_require__(/*! ./fontawesome */ "./source/_assets/js/fontawesome.js"); // Load the correct BulmaJS file
+
+
+Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["loadScript"])('/assets/bulmajs/' + Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["getSelectedVersion"])() + '/dist/bulma.js', function () {
+  return Bulma.traverseDOM();
+}, function () {
+  Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["loadScript"])('/assets/bulmajs/master/dist/bulma.js', function () {
+    return Bulma.traverseDOM();
+  }, function () {
+    return alert("We was unable to load a version of BulmaJS there may be some display or functionality issues with this site.");
+  });
+});
 
 /***/ }),
 
