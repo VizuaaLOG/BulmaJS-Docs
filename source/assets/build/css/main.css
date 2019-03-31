@@ -4541,7 +4541,7 @@ a.tag:hover {
 .title {
   color: #363636;
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.125;
 }
 .title strong {
@@ -9137,16 +9137,20 @@ label.panel-block:hover {
   padding: 3rem 1.5rem 6rem;
 }
 
+.has-margin-bottom-2 {
+  margin-bottom: 0.5rem !important;
+}
+
 .has-margin-top-4 {
-  margin-top: 1rem;
+  margin-top: 1rem !important;
 }
 
 .is-inline-block {
-  display: inline-block;
+  display: inline-block !important;
 }
 
 .has-background-black-20 {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.2) !important;
 }
 
 .version-selector:not(.is-multiple):not(.is-loading)::after {
@@ -9171,4 +9175,8 @@ label.panel-block:hover {
 .code-snippet code {
   background: transparent;
   color: currentColor;
+}
+
+.feature-icon {
+  height: 64px;
 }
