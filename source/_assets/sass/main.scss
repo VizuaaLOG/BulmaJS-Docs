@@ -1,1 +1,37 @@
+@import "variables";
+
 @import "bulma";
+
+@import "utilities";
+
+.version-selector {
+    &:not(.is-multiple):not(.is-loading)::after {
+        border-color: white;
+        border-width: 1px;
+    }
+
+    select {
+        background-color: rgba(0, 0, 0, 0.1);
+        color: $white;
+        border: none;
+    }
+
+    &:hover {
+        &:not(.is-multiple):not(.is-loading)::after {
+            border-color: white;
+        }
+
+        select {
+            background-color: rgba(0, 0, 0, 0.15);
+        }
+    }
+}
+
+.code-snippet {
+    padding: 1rem;
+
+    code {
+        background: transparent;
+        color: currentColor;
+    }
+}

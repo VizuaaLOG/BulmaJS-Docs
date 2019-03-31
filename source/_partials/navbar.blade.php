@@ -27,8 +27,8 @@
                 <div class="navbar-item">
                     <div class="field">
                         <div class="control">
-                            <div class="select">
-                                <select name="version" id="version">
+                            <div class="select version-selector">
+                                <select name="version-selector" id="version-selector">
                                     @foreach($page->versions as $version)
                                         @if($page->documentation_version == $version)
                                             <option value="{{ $version }}" selected>{{ $version }}</option>

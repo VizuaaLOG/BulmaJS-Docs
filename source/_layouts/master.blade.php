@@ -10,5 +10,17 @@
         @include('_partials.navbar')
 
         @yield('body')
+
+        <footer class="footer">
+            <div class="container">
+                <div class="content has-text-centered">
+                    <p>
+                        <strong>BulmaJS</strong> by <a href="https://github.com/VizuaaLOG">Thomas Erbe</a>. Found a typo? File an <a href="https://github.com/VizuaaLOG/BulmaJS/issues">issue on Github</a>! Or <a href="https://github.com/VizuaaLOG/BulmaJS/pulls">submit a pull request</a>.
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="{{ mix('js/main.js', 'assets/build') }}"></script>
     </body>
 </html>
