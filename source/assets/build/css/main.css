@@ -9185,6 +9185,9 @@ label.panel-block:hover {
   padding: 1rem 0 1rem 3rem;
 }
 .docs-wrapper .content {
-  padding: 1rem 3rem 1rem 0;
+  padding: 1rem 3rem 1rem 1rem;
   min-height: 100%;
+}
+.docs-wrapper .content h1, .docs-wrapper .content h2, .docs-wrapper .content h3, .docs-wrapper .content h4, .docs-wrapper .content h5 {
+  font-weight: 400;
 }
