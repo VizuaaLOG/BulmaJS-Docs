@@ -4,6 +4,8 @@
 /vendor/
 /.idea/
 /.vscode/
+/source/assets/bulmajs/**/*
+!/source/assets/bulmajs/.gitkeep
 npm-debug.log
 yarn-error.log
 
