@@ -1,1 +1,1 @@
-<script>window.location.href += 'getting-started/introduction';</script>
+<script>window.location.href += '1-getting-started/1-introduction';</script>

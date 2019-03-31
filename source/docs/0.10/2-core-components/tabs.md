@@ -1,8 +1,9 @@
 ---
-extends: _layouts.master
+extends: _layouts.docs
 title: Tabs
 category: 'Core components'
 section: 'body'
+version: '0.10'
 stats: true
 since_version: 0.4.0
 data_api: true

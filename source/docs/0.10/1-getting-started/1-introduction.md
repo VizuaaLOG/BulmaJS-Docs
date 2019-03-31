@@ -1,9 +1,9 @@
 ---
-extends: _layouts.master
+extends: _layouts.docs
 title: Introduction
 category: 'Getting started'
 section: 'body'
-page_order: 0
+version: '0.10'
 ---
 
 BulmaJS is a Javascript extension to the modern CSS framework Bulma. BulmaJS provides a range of different Javascript plugins that add interactivity to some Bulma components, with a simple API, a range of configuration options and no dependencies!

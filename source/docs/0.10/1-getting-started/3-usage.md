@@ -1,9 +1,9 @@
 ---
-extends: _layouts.master
+extends: _layouts.docs
 title: Usage
 category: 'Getting started'
 section: 'body'
-page_order: 2
+version: '0.10'
 ---
 
 BulmaJS is fairly straightforward to use. There are two ways you can create and interact with BulmaJS plugins. Some plugins may only implement one of these methods, depending on the plugin. However, this will be visually displayed on the plugins documentation page.

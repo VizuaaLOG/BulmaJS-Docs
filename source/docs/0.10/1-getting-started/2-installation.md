@@ -1,8 +1,9 @@
 ---
-extends: _layouts.master
+extends: _layouts.docs
 title: Installation
 category: 'Getting Started'
 section: body
+version: '0.10'
 ---
 
 Installing BulmaJS couldn't easier. There are two ways to install BulmaJS in your project. The first is using the recommended ES6 way and the not-recommended pre-compiled way.

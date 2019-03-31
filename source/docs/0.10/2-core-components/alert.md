@@ -1,8 +1,9 @@
 ---
-extends: _layouts.master
+extends: _layouts.docs
 title: Alert
 category: 'Core components'
 section: 'body'
+version: '0.10'
 stats: true
 since_version: 0.8.0
 data_api: no

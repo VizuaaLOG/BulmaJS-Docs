@@ -13,7 +13,7 @@ function getPageList($version, $collection = false, $path = false) {
 
     if(file_exists($path) && is_dir($path)) {
         $result = scandir($path);
-        $files = array_diff($result, array('.', '..', '.DS_Store', 'index.blade.md'));
+        $files = array_diff($result, array('.', '..', '.DS_Store', 'index.blade.md', 'index.blade.php'));
         
         if(count($files) > 0) {
             foreach($files as $file) {
@@ -31,7 +31,7 @@ function getPageList($version, $collection = false, $path = false) {
         $item = [
             'path' => '/docs/' . $version . '/' . $path,
             'category' => ucwords(str_replace('-', ' ', $p[0])),
-            'page' => ucwords(str_replace('-', ' ', $p[1]))
+            'page' => ucwords(str_replace('-', ' ', preg_replace("/^(\d)*-/", '', $p[1])))
         ];
         return (object) $item;
     })->groupBy('category');

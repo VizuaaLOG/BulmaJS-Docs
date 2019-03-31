@@ -1,9 +1,9 @@
 ---
-extends: _layouts.master
+extends: _layouts.docs
 title: Creating a plugin
 category: 'Getting started'
 section: 'body'
-page_order: 3
+version: '0.10'
 ---
 
 BulmaJS uses a simple plugin system allowing anyone to create their own and hook into the BulmaJS core. A BulmaJS plugin is a simple class with some static methods to integrate into the core's API. Within this short guide we're going to create a simple plugin that attaches a click handler to any element with the class `click-me`.

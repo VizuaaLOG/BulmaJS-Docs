@@ -1,8 +1,9 @@
 ---
-extends: _layouts.master
+extends: _layouts.docs
 title: File
 category: 'Core components'
 section: 'body'
+version: '0.10'
 stats: true
 since_version: 0.1.0
 data_api: true
