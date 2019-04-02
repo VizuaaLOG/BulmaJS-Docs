@@ -12,7 +12,7 @@
         <div class="docs-wrapper">
             <div class="columns">
                 <div class="column is-3 is-clearfix">
-                    @include('_partials.docs_sidebar', ['versionUrl' => $page->versionUrl])
+                    @include('_partials.docs_sidebar')
                 </div>
 
                 <div class="column is-expanded">
