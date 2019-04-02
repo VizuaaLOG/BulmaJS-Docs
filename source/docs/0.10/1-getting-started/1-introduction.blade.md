@@ -9,7 +9,7 @@ next:
     - ../2-installation
 ---
 
-BulmaJS is a Javascript extension to the modern CSS framework Bulma. BulmaJS provides a range of different Javascript plugins that add interactivity to some Bulma components, with a simple API, a range of configuration options and no dependencies!
+BulmaJS is a Javascript extension to the modern CSS framework [Bulma](bulma.io), providing a range of different Javascript plugins that add interactivity to some Bulma components, with a simple API, a range of configuration options and no dependencies!
 
 ## Plugins
 Every 'component' in BulmaJS is its own self-contained plugin. All that is required is the BulmaJS core, this provides basic functionality for each plugin to register itself and also handles the initial DOM parsing and creating of plugins. The core also contains common methods used throughout the other plugins.
