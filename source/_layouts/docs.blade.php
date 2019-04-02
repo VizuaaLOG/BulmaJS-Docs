@@ -11,27 +11,29 @@
 
         <div class="docs-wrapper">
             <div class="columns">
-                <div class="column is-3">
+                <div class="column is-3 is-clearfix">
                     @include('_partials.docs_sidebar', ['versionUrl' => $page->versionUrl])
                 </div>
 
                 <div class="column is-expanded">
                     <div class="content has-background-white">
+                        <h1>{{ $page->title }}</h1>
+                        
                         @yield('body')
+
+                        @include('_partials.docs_end_nav')
                     </div>
                 </div>
             </div>
-        </div>
 
-        <footer class="footer">
-            <div class="container">
+            <footer class="footer">
                 <div class="content has-text-centered">
                     <p>
                         <strong>BulmaJS</strong> by <a href="https://github.com/VizuaaLOG">Thomas Erbe</a>. Found a typo? File an <a href="https://github.com/VizuaaLOG/BulmaJS/issues">issue on Github</a>! Or <a href="https://github.com/VizuaaLOG/BulmaJS/pulls">submit a pull request</a>.
                     </p>
                 </div>
-            </div>
-        </footer>
+            </footer>
+        </div>
 
         <script src="{{ mix('js/main.js', 'assets/build') }}"></script>
     </body>

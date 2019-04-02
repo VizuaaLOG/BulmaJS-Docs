@@ -4,6 +4,9 @@ title: Introduction
 category: 'Getting started'
 section: 'body'
 version: '0.10'
+next:
+    - Installation
+    - 2-installation
 ---
 
 BulmaJS is a Javascript extension to the modern CSS framework Bulma. BulmaJS provides a range of different Javascript plugins that add interactivity to some Bulma components, with a simple API, a range of configuration options and no dependencies!
@@ -17,12 +20,3 @@ You can then build your own bundle by including the plugins you need. The core w
 BulmaJS is built using modern Javascript using ECMAScript 6. This doesn't mean you can't use it you do not use ES6 though! All plugins are pre-compiled into self-contained ES5 distribution files, along with a 'kitchen sink' version which contains all plugins.
 
 We would recommend building your own bundle though, as this will provide the most flexibility.
-
-<div>
-    <div class="columns">
-        <div class="column is-6"></div>
-        <div class="column is-6">
-            <a class="button is-block is-large is-primary is-outlined" href="2-installation">Installation <span class="fas fa-arrow-right"></span></a>
-        </div>
-    </div>
-</div>

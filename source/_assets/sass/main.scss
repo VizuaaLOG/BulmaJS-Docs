@@ -41,16 +41,118 @@
 }
 
 .docs-wrapper {
+    > .columns {
+        margin-bottom: 0;
+
+        > .column {
+            padding-bottom: 0;
+        }
+    }
+
     aside {
-        padding: 1rem 0 1rem 3rem;
+        padding: .5rem 0 1rem 3rem;
     }
 
     .content {
         padding: 1rem 3rem 1rem 1rem;
         min-height: 100%;
+        position: relative;
+
+        @include mobile { padding-bottom: 0; }
 
         h1, h2, h3, h4, h5 {
             font-weight: 400;
+        }
+
+        h1 {
+            color: $primary;
+        }
+    }
+
+    .docs-nav {
+        display: flex;
+        margin-left: -1rem;
+        margin-right: -3rem;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    
+        @include mobile {
+            position: static;
+            width: auto;
+        }
+    
+        .docs-nav-item {
+            width: 50%;
+    
+            .docs-nav-next,
+            .docs-nav-prev {
+                display: block;
+                width: 100%;
+                padding: 1.5rem;
+                font-size: 1.2rem;
+                color: #FFFFFF;
+                position: relative;
+                transition: background-color 200ms ease-in-out;
+                overflow: hidden;
+    
+                &::after {
+                    border: 1px solid #FFFFFF;
+                    border-radius: 2px;
+                    content: " ";
+                    display: block;
+                    height: 1em;
+                    width: 1em;
+                    margin-top: -0.4375em;
+                    pointer-events: none;
+                    position: absolute;
+                    top: 50%;
+                    -webkit-transform-origin: center;
+                    transform-origin: center;
+                    border-left: 0;
+                    border-top: 0;
+                }
+            }
+    
+            .docs-nav-next {
+                background-color: $primary;
+        
+                &::after {
+                    -webkit-transform: rotate(-45deg);
+                    transform: rotate(-45deg);
+                    right: -1.125em;
+                    transition: right 200ms ease-in-out;
+                }
+        
+                &:hover {
+                    background-color: $primary-darker;
+        
+                    &::after {
+                        right: 1.125em;
+                    }
+                }
+            }
+    
+            .docs-nav-prev {
+                background-color: $primary-washed;
+                transition: padding-left 200ms ease-in-out;
+    
+                &::after {
+                    -webkit-transform: rotate(135deg);
+                    transform: rotate(135deg);
+                    left: -1.125em;
+                    transition: left 200ms ease-in-out;
+                }
+    
+                &:hover {
+                    background-color: $primary-washed-darker;
+                    padding-left: 2.5rem;
+    
+                    &::after {
+                        left: 1.125em;
+                    }
+                }
+            }
         }
     }
 }
