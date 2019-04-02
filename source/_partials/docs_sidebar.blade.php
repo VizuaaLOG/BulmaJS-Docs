@@ -8,7 +8,7 @@ $menuItems = getPageList($page->version);
         <ul class="menu-list">
             @foreach($subItems as $subItem)
                 <li>
-                    <a href="{{ $subItem->path }}">{{ $subItem->page }}</a>
+                    <a class="{{ $page->is($subItem->path) ? 'is-active' : '' }}" href="{{ $subItem->path }}">{{ $subItem->page }}</a>
                 </li>
             @endforeach
         </ul>

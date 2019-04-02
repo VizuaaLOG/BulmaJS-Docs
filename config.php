@@ -13,4 +13,7 @@ return [
     ],
     'released_version' => '0.10.0',
     'documentation_version' => '0.10',
+    'is' => function ($page, $section) {
+        return str_contains($page->getPath(), $section) ? 'is-active' : '';
+    },
 ];
