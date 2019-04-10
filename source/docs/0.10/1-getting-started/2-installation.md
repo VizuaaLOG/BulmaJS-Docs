@@ -11,9 +11,9 @@ Installing BulmaJS couldn't easier. There are two ways to install BulmaJS in you
 ### Install using ES6
 The recommended way to install and use BulmaJS is by pulling it in via NPM:
 
-{% highlight bash %}
+```bash
 npm install --save-dev @vizuaalog/bulmajs
-{% endhighlight %}
+```
 
 Once BulmaJS has been downloaded you can now include it in your project. Within your un-compiled ES6 Javascript source you can include all of BulmaJS or only the plugins you need.
 

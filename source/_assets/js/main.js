@@ -1,6 +1,7 @@
 import { getSelectedVersion, loadScript } from './helpers';
 
 require('./fontawesome');
+require('./prism');
 
 // Load the correct BulmaJS file
 loadScript('/assets/bulmajs/' + getSelectedVersion() + '/dist/bulma.js', () => Bulma.traverseDOM(), () => {

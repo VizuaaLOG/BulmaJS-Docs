@@ -4,6 +4,8 @@
 
 @import "utilities";
 
+@import "prism";
+
 .navbar.has-shadow { box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.65); }
 
 .version-selector {
@@ -181,4 +183,18 @@ h1, h2, h3 {
 .fa-link {
     margin-right: 8px;
     color: #d4d4d4
+}
+
+div.code-toolbar > .toolbar {
+    top: -6px;
+    right: -1px;
+}
+
+div.code-toolbar > .toolbar a, div.code-toolbar > .toolbar button, div.code-toolbar > .toolbar span {
+    border-radius: 0;
+
+    &:hover, &:focus {
+        color: $white;
+        background-color: $primary;
+    }
 }
