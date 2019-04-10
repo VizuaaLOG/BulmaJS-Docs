@@ -13616,8 +13616,9 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__(/*! ./fontawesome */ "./source/_assets/js/fontawesome.js");
 
-__webpack_require__(/*! ./prism */ "./source/_assets/js/prism.js"); // Load the correct BulmaJS file
+__webpack_require__(/*! ./prism */ "./source/_assets/js/prism.js");
 
+Prism.plugins.customClass.prefix('prism-'); // Load the correct BulmaJS file
 
 Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["loadScript"])('/assets/bulmajs/' + Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["getSelectedVersion"])() + '/dist/bulma.js', function () {
   return Bulma.traverseDOM();
@@ -13639,7 +13640,7 @@ Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["loadScript"])('/assets/bulmajs/' +
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/* PrismJS 1.16.0
-https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript+bash+javadoclike+json+jsdoc+js-extras&plugins=line-numbers+toolbar+copy-to-clipboard */
+https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript+bash+javadoclike+json+jsdoc+js-extras&plugins=custom-class+toolbar+normalize-whitespace+copy-to-clipboard */
 var _self = typeof window !== 'undefined' ? window // if in browser
 : typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope ? self // if in worker
 : {} // if in node js
@@ -14743,164 +14744,30 @@ Prism.languages.json = {
 })(Prism);
 
 (function () {
-  if (typeof self === 'undefined' || !self.Prism || !self.document) {
+  if ((typeof self === 'undefined' || !self.Prism) && (typeof global === 'undefined' || !global.Prism)) {
     return;
   }
-  /**
-   * Plugin name which is used as a class name for <pre> which is activating the plugin
-   * @type {String}
-   */
 
-
-  var PLUGIN_NAME = 'line-numbers';
-  /**
-   * Regular expression used for determining line breaks
-   * @type {RegExp}
-   */
-
-  var NEW_LINE_EXP = /\n(?!$)/g;
-  /**
-   * Resizes line numbers spans according to height of line of code
-   * @param {Element} element <pre> element
-   */
-
-  var _resizeElement = function _resizeElement(element) {
-    var codeStyles = getStyles(element);
-    var whiteSpace = codeStyles['white-space'];
-
-    if (whiteSpace === 'pre-wrap' || whiteSpace === 'pre-line') {
-      var codeElement = element.querySelector('code');
-      var lineNumbersWrapper = element.querySelector('.line-numbers-rows');
-      var lineNumberSizer = element.querySelector('.line-numbers-sizer');
-      var codeLines = codeElement.textContent.split(NEW_LINE_EXP);
-
-      if (!lineNumberSizer) {
-        lineNumberSizer = document.createElement('span');
-        lineNumberSizer.className = 'line-numbers-sizer';
-        codeElement.appendChild(lineNumberSizer);
-      }
-
-      lineNumberSizer.style.display = 'block';
-      codeLines.forEach(function (line, lineNumber) {
-        lineNumberSizer.textContent = line || '\n';
-        var lineSize = lineNumberSizer.getBoundingClientRect().height;
-        lineNumbersWrapper.children[lineNumber].style.height = lineSize + 'px';
-      });
-      lineNumberSizer.textContent = '';
-      lineNumberSizer.style.display = 'none';
+  var options = {
+    classMap: {}
+  };
+  Prism.plugins.customClass = {
+    map: function map(cm) {
+      options.classMap = cm;
+    },
+    prefix: function prefix(string) {
+      options.prefixString = string;
     }
   };
-  /**
-   * Returns style declarations for the element
-   * @param {Element} element
-   */
-
-
-  var getStyles = function getStyles(element) {
-    if (!element) {
-      return null;
+  Prism.hooks.add('wrap', function (env) {
+    if (!options.classMap && !options.prefixString) {
+      return;
     }
 
-    return window.getComputedStyle ? getComputedStyle(element) : element.currentStyle || null;
-  };
-
-  window.addEventListener('resize', function () {
-    Array.prototype.forEach.call(document.querySelectorAll('pre.' + PLUGIN_NAME), _resizeElement);
+    env.classes = env.classes.map(function (c) {
+      return (options.prefixString || '') + (options.classMap[c] || c);
+    });
   });
-  Prism.hooks.add('complete', function (env) {
-    if (!env.code) {
-      return;
-    }
-
-    var code = env.element;
-    var pre = code.parentNode; // works only for <code> wrapped inside <pre> (not inline)
-
-    if (!pre || !/pre/i.test(pre.nodeName)) {
-      return;
-    } // Abort if line numbers already exists
-
-
-    if (code.querySelector('.line-numbers-rows')) {
-      return;
-    }
-
-    var addLineNumbers = false;
-    var lineNumbersRegex = /(?:^|\s)line-numbers(?:\s|$)/;
-
-    for (var element = code; element; element = element.parentNode) {
-      if (lineNumbersRegex.test(element.className)) {
-        addLineNumbers = true;
-        break;
-      }
-    } // only add line numbers if <code> or one of its ancestors has the `line-numbers` class
-
-
-    if (!addLineNumbers) {
-      return;
-    } // Remove the class 'line-numbers' from the <code>
-
-
-    code.className = code.className.replace(lineNumbersRegex, ' '); // Add the class 'line-numbers' to the <pre>
-
-    if (!lineNumbersRegex.test(pre.className)) {
-      pre.className += ' line-numbers';
-    }
-
-    var match = env.code.match(NEW_LINE_EXP);
-    var linesNum = match ? match.length + 1 : 1;
-    var lineNumbersWrapper;
-    var lines = new Array(linesNum + 1).join('<span></span>');
-    lineNumbersWrapper = document.createElement('span');
-    lineNumbersWrapper.setAttribute('aria-hidden', 'true');
-    lineNumbersWrapper.className = 'line-numbers-rows';
-    lineNumbersWrapper.innerHTML = lines;
-
-    if (pre.hasAttribute('data-start')) {
-      pre.style.counterReset = 'linenumber ' + (parseInt(pre.getAttribute('data-start'), 10) - 1);
-    }
-
-    env.element.appendChild(lineNumbersWrapper);
-
-    _resizeElement(pre);
-
-    Prism.hooks.run('line-numbers', env);
-  });
-  Prism.hooks.add('line-numbers', function (env) {
-    env.plugins = env.plugins || {};
-    env.plugins.lineNumbers = true;
-  });
-  /**
-   * Global exports
-   */
-
-  Prism.plugins.lineNumbers = {
-    /**
-     * Get node for provided line number
-     * @param {Element} element pre element
-     * @param {Number} number line number
-     * @return {Element|undefined}
-     */
-    getLine: function getLine(element, number) {
-      if (element.tagName !== 'PRE' || !element.classList.contains(PLUGIN_NAME)) {
-        return;
-      }
-
-      var lineNumberRows = element.querySelector('.line-numbers-rows');
-      var lineNumberStart = parseInt(element.getAttribute('data-start'), 10) || 1;
-      var lineNumberEnd = lineNumberStart + (lineNumberRows.children.length - 1);
-
-      if (number < lineNumberStart) {
-        number = lineNumberStart;
-      }
-
-      if (number > lineNumberEnd) {
-        number = lineNumberEnd;
-      }
-
-      var lineIndex = number - lineNumberStart;
-      return lineNumberRows.children[lineIndex];
-    }
-  };
 })();
 
 (function () {
@@ -15052,6 +14919,187 @@ Prism.languages.json = {
    */
 
   Prism.hooks.add('complete', hook);
+})();
+
+(function () {
+  var assign = Object.assign || function (obj1, obj2) {
+    for (var name in obj2) {
+      if (obj2.hasOwnProperty(name)) obj1[name] = obj2[name];
+    }
+
+    return obj1;
+  };
+
+  function NormalizeWhitespace(defaults) {
+    this.defaults = assign({}, defaults);
+  }
+
+  function toCamelCase(value) {
+    return value.replace(/-(\w)/g, function (match, firstChar) {
+      return firstChar.toUpperCase();
+    });
+  }
+
+  function tabLen(str) {
+    var res = 0;
+
+    for (var i = 0; i < str.length; ++i) {
+      if (str.charCodeAt(i) == '\t'.charCodeAt(0)) res += 3;
+    }
+
+    return str.length + res;
+  }
+
+  NormalizeWhitespace.prototype = {
+    setDefaults: function setDefaults(defaults) {
+      this.defaults = assign(this.defaults, defaults);
+    },
+    normalize: function normalize(input, settings) {
+      settings = assign(this.defaults, settings);
+
+      for (var name in settings) {
+        var methodName = toCamelCase(name);
+
+        if (name !== "normalize" && methodName !== 'setDefaults' && settings[name] && this[methodName]) {
+          input = this[methodName].call(this, input, settings[name]);
+        }
+      }
+
+      return input;
+    },
+
+    /*
+     * Normalization methods
+     */
+    leftTrim: function leftTrim(input) {
+      return input.replace(/^\s+/, '');
+    },
+    rightTrim: function rightTrim(input) {
+      return input.replace(/\s+$/, '');
+    },
+    tabsToSpaces: function tabsToSpaces(input, spaces) {
+      spaces = spaces | 0 || 4;
+      return input.replace(/\t/g, new Array(++spaces).join(' '));
+    },
+    spacesToTabs: function spacesToTabs(input, spaces) {
+      spaces = spaces | 0 || 4;
+      return input.replace(RegExp(' {' + spaces + '}', 'g'), '\t');
+    },
+    removeTrailing: function removeTrailing(input) {
+      return input.replace(/\s*?$/gm, '');
+    },
+    // Support for deprecated plugin remove-initial-line-feed
+    removeInitialLineFeed: function removeInitialLineFeed(input) {
+      return input.replace(/^(?:\r?\n|\r)/, '');
+    },
+    removeIndent: function removeIndent(input) {
+      var indents = input.match(/^[^\S\n\r]*(?=\S)/gm);
+      if (!indents || !indents[0].length) return input;
+      indents.sort(function (a, b) {
+        return a.length - b.length;
+      });
+      if (!indents[0].length) return input;
+      return input.replace(RegExp('^' + indents[0], 'gm'), '');
+    },
+    indent: function indent(input, tabs) {
+      return input.replace(/^[^\S\n\r]*(?=\S)/gm, new Array(++tabs).join('\t') + '$&');
+    },
+    breakLines: function breakLines(input, characters) {
+      characters = characters === true ? 80 : characters | 0 || 80;
+      var lines = input.split('\n');
+
+      for (var i = 0; i < lines.length; ++i) {
+        if (tabLen(lines[i]) <= characters) continue;
+        var line = lines[i].split(/(\s+)/g),
+            len = 0;
+
+        for (var j = 0; j < line.length; ++j) {
+          var tl = tabLen(line[j]);
+          len += tl;
+
+          if (len > characters) {
+            line[j] = '\n' + line[j];
+            len = tl;
+          }
+        }
+
+        lines[i] = line.join('');
+      }
+
+      return lines.join('\n');
+    }
+  }; // Support node modules
+
+  if ( true && module.exports) {
+    module.exports = NormalizeWhitespace;
+  } // Exit if prism is not loaded
+
+
+  if (typeof Prism === 'undefined') {
+    return;
+  }
+
+  Prism.plugins.NormalizeWhitespace = new NormalizeWhitespace({
+    'remove-trailing': true,
+    'remove-indent': true,
+    'left-trim': true,
+    'right-trim': true
+    /*'break-lines': 80,
+    'indent': 2,
+    'remove-initial-line-feed': false,
+    'tabs-to-spaces': 4,
+    'spaces-to-tabs': 4*/
+
+  });
+  Prism.hooks.add('before-sanity-check', function (env) {
+    var Normalizer = Prism.plugins.NormalizeWhitespace; // Check settings
+
+    if (env.settings && env.settings['whitespace-normalization'] === false) {
+      return;
+    } // Simple mode if there is no env.element
+
+
+    if ((!env.element || !env.element.parentNode) && env.code) {
+      env.code = Normalizer.normalize(env.code, env.settings);
+      return;
+    } // Normal mode
+
+
+    var pre = env.element.parentNode;
+    var clsReg = /(?:^|\s)no-whitespace-normalization(?:\s|$)/;
+    if (!env.code || !pre || pre.nodeName.toLowerCase() !== 'pre' || clsReg.test(pre.className) || clsReg.test(env.element.className)) return;
+    var children = pre.childNodes,
+        before = '',
+        after = '',
+        codeFound = false; // Move surrounding whitespace from the <pre> tag into the <code> tag
+
+    for (var i = 0; i < children.length; ++i) {
+      var node = children[i];
+
+      if (node == env.element) {
+        codeFound = true;
+      } else if (node.nodeName === "#text") {
+        if (codeFound) {
+          after += node.nodeValue;
+        } else {
+          before += node.nodeValue;
+        }
+
+        pre.removeChild(node);
+        --i;
+      }
+    }
+
+    if (!env.element.children.length || !Prism.plugins.KeepMarkup) {
+      env.code = before + env.code + after;
+      env.code = Normalizer.normalize(env.code, env.settings);
+    } else {
+      // Preserve markup for keep-markup plugin
+      var html = before + env.element.innerHTML + after;
+      env.element.innerHTML = Normalizer.normalize(html, env.settings);
+      env.code = env.element.textContent;
+    }
+  });
 })();
 
 (function () {

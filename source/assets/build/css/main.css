@@ -9154,7 +9154,7 @@ label.panel-block:hover {
 }
 
 /* PrismJS 1.16.0
-https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript+bash+javadoclike+json+jsdoc+js-extras&plugins=line-numbers+toolbar+copy-to-clipboard */
+https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript+bash+javadoclike+json+jsdoc+js-extras&plugins=custom-class+toolbar+normalize-whitespace+copy-to-clipboard */
 /**
  * prism.js tomorrow night eighties for JavaScript, CoffeeScript, CSS and HTML
  * Based on https://github.com/chriskempson/tomorrow-theme
@@ -9199,120 +9199,79 @@ pre[class*=language-] {
   white-space: normal;
 }
 
-.token.comment,
-.token.block-comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
+.prism-token.prism-comment,
+.prism-token.prism-block-comment,
+.prism-token.prism-prolog,
+.prism-token.prism-doctype,
+.prism-token.prism-cdata {
   color: #999;
 }
 
-.token.punctuation {
+.prism-token.prism-punctuation {
   color: #ccc;
 }
 
-.token.tag,
-.token.attr-name,
-.token.namespace,
-.token.deleted {
+.prism-token.prism-tag,
+.prism-token.prism-attr-name,
+.prism-token.prism-namespace,
+.prism-token.prism-deleted {
   color: #e2777a;
 }
 
-.token.function-name {
+.prism-token.prism-function-name {
   color: #6196cc;
 }
 
-.token.boolean,
-.token.number,
-.token.function {
+.prism-token.prism-boolean,
+.prism-token.prism-number,
+.prism-token.prism-function {
   color: #f08d49;
 }
 
-.token.property,
-.token.class-name,
-.token.constant,
-.token.symbol {
+.prism-token.prism-property,
+.prism-token.prism-class-name,
+.prism-token.prism-constant,
+.prism-token.prism-symbol {
   color: #f8c555;
 }
 
-.token.selector,
-.token.important,
-.token.atrule,
-.token.keyword,
-.token.builtin {
+.prism-token.prism-selector,
+.prism-token.prism-important,
+.prism-token.prism-atrule,
+.prism-token.prism-keyword,
+.prism-token.prism-builtin {
   color: #cc99cd;
 }
 
-.token.string,
-.token.char,
-.token.attr-value,
-.token.regex,
-.token.variable {
+.prism-token.prism-string,
+.prism-token.prism-char,
+.prism-token.prism-attr-value,
+.prism-token.prism-regex,
+.prism-token.prism-variable {
   color: #7ec699;
 }
 
-.token.operator,
-.token.entity,
-.token.url {
+.prism-token.prism-operator,
+.prism-token.prism-entity,
+.prism-token.prism-url {
   color: #67cdcc;
 }
 
-.token.important,
-.token.bold {
+.prism-token.prism-important,
+.prism-token.prism-bold {
   font-weight: bold;
 }
 
-.token.italic {
+.prism-token.prism-italic {
   font-style: italic;
 }
 
-.token.entity {
+.prism-token.prism-entity {
   cursor: help;
 }
 
-.token.inserted {
+.prism-token.prism-inserted {
   color: green;
-}
-
-pre[class*=language-].line-numbers {
-  position: relative;
-  padding-left: 3.8em;
-  counter-reset: linenumber;
-}
-
-pre[class*=language-].line-numbers > code {
-  position: relative;
-  white-space: inherit;
-}
-
-.line-numbers .line-numbers-rows {
-  position: absolute;
-  pointer-events: none;
-  top: 0;
-  font-size: 100%;
-  left: -3.8em;
-  width: 3em;
-  /* works for line-numbers below 1000 lines */
-  letter-spacing: -1px;
-  border-right: 1px solid #999;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.line-numbers-rows > span {
-  pointer-events: none;
-  display: block;
-  counter-increment: linenumber;
-}
-
-.line-numbers-rows > span:before {
-  content: counter(linenumber);
-  color: #999;
-  display: block;
-  padding-right: 0.8em;
-  text-align: right;
 }
 
 div.code-toolbar {
@@ -9321,8 +9280,8 @@ div.code-toolbar {
 
 div.code-toolbar > .toolbar {
   position: absolute;
-  top: 0.3em;
-  right: 0.2em;
+  top: -6px;
+  right: -1px;
   transition: opacity 0.3s ease-in-out;
   opacity: 0;
 }
@@ -9362,7 +9321,6 @@ div.code-toolbar > .toolbar span {
   background: #f5f2f0;
   background: rgba(224, 224, 224, 0.2);
   box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.2);
-  border-radius: 0.5em;
 }
 
 div.code-toolbar > .toolbar a:hover,
@@ -9371,7 +9329,8 @@ div.code-toolbar > .toolbar button:hover,
 div.code-toolbar > .toolbar button:focus,
 div.code-toolbar > .toolbar span:hover,
 div.code-toolbar > .toolbar span:focus {
-  color: inherit;
+  color: white;
+  background-color: #ff3860;
   text-decoration: none;
 }
 
@@ -9536,12 +9495,4 @@ h1:hover a, h2:hover a, h3:hover a {
 div.code-toolbar > .toolbar {
   top: -6px;
   right: -1px;
-}
-
-div.code-toolbar > .toolbar a, div.code-toolbar > .toolbar button, div.code-toolbar > .toolbar span {
-  border-radius: 0;
-}
-div.code-toolbar > .toolbar a:hover, div.code-toolbar > .toolbar a:focus, div.code-toolbar > .toolbar button:hover, div.code-toolbar > .toolbar button:focus, div.code-toolbar > .toolbar span:hover, div.code-toolbar > .toolbar span:focus {
-  color: white;
-  background-color: #ff3860;
 }
