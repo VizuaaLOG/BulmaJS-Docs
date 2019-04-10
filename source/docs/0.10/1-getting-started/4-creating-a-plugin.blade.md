@@ -4,6 +4,12 @@ title: Creating a plugin
 category: 'Getting started'
 section: 'body'
 version: '0.10'
+next:
+    - Alert
+    - ../../2-core-components/alert
+prev:
+    - Usage
+    - ../3-usage
 ---
 
 BulmaJS uses a simple plugin system allowing anyone to create their own and hook into the BulmaJS core. A BulmaJS plugin is a simple class with some static methods to integrate into the core's API. Within this short guide we're going to create a simple plugin that attaches a click handler to any element with the class `click-me`.
@@ -11,7 +17,7 @@ BulmaJS uses a simple plugin system allowing anyone to create their own and hook
 ## Setup
 The first thing you need to do is create a new folder for your project. In this example we will call our folder `bulmajs-click-me`. You can structure this folder however you like. But we're going to use the structure below.
 
-![Folder structure]({{ site.url }}/assets/images/0.7/creating-a-plugin-folder-structure.png)
+![Folder structure](/assets/images/{{ $page->version }}/creating-a-plugin-folder-structure.png)
 
 + **dist** This is used for our production ready files once they have processed (we're not going to cover this in this guide, there are many webpack (or other bundling tools) guides out there, and they'll do a better job of explaining that.)
 + **src** This is where our source files will live.

@@ -11,6 +11,7 @@ return [
         '0.8',
         '0.7',
     ],
+    'github_issues_url' => 'https://github.com/VizuaaLOG/BulmaJS/issues',
     'released_version' => '0.10.0',
     'documentation_version' => '0.10',
     'is' => function ($page, $section) {

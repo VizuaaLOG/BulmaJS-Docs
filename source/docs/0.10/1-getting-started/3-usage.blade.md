@@ -4,6 +4,12 @@ title: Usage
 category: 'Getting started'
 section: 'body'
 version: '0.10'
+next:
+    - Creating a plugin
+    - ../4-creating-a-plugin
+prev:
+    - Installation
+    - ../3-installation
 ---
 
 BulmaJS is fairly straightforward to use. There are two ways you can create and interact with BulmaJS plugins. Some plugins may only implement one of these methods, depending on the plugin. However, this will be visually displayed on the plugins documentation page.
@@ -18,11 +24,11 @@ Some plugins will also provide additional options you can add to the element thr
 
 By default BulmaJS will automatically parse the document on page load, looking for plugins to initialise. If you're implementing BulmaJS into an environment that requires this to be manually done, ensure the below snippet is included before BulmaJS loads.
 
-{% highlight javascript %}
+```javascript
 window.bulmaOptions {
     autoParseDocument: false
 }
-{% endhighlight %}
+```
 
 You can then manually parse the document by calling `Bulma.traverseDOM()`. You can also provide a custom scope to the `traverseDOM` function by providing a HTMLElement as the first parameter, this defaults to `document`.
 
@@ -31,7 +37,7 @@ If you would prefer to create the plugin instances within Javascript, you can do
 
 For example, using `Bulma.create` you can easily link a Javascript modal instance to a Modal element:
 
-{% highlight javascript %}
+```javascript
 import Modal from '@vizuaalog/bulmajs/src/plugins/Modal';
 
 var modal = Modal.create({
@@ -40,15 +46,6 @@ var modal = Modal.create({
 
 // You can now call methods on modal
 modal.open();
-{% endhighlight %}
+```
 
 You can find more information on how to use the Modal plugin by visiting the Modal documentation page.
-
-<div>
-    <div class="columns">
-        <div class="column is-6"></div>
-        <div class="column is-6">
-            <a class="button is-block is-large is-primary is-outlined" href="4-creating-a-plugin">Creating a plugin <span class="fas fa-arrow-right"></span></a>
-        </div>
-    </div>
-</div>
