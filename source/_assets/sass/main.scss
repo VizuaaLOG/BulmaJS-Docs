@@ -31,15 +31,6 @@
     }
 }
 
-.code-snippet {
-    padding: 1rem;
-
-    code {
-        background: transparent;
-        color: currentColor;
-    }
-}
-
 .feature-icon {
     height: 64px;
 }
@@ -188,4 +179,40 @@ h1, h2, h3 {
 div.code-toolbar > .toolbar {
     top: -6px;
     right: -1px;
+}
+
+.npm-snippet {
+    padding: 1rem;
+
+    code {
+        background: transparent;
+        color: currentColor;
+    }
+}
+
+.code-snippet.is-example {
+    border: 1px solid $primary;
+    padding: 0.5rem;
+    border-radius: 0 5px 5px 5px;
+    position: relative;
+    margin: 2rem 0 1rem 0;
+
+    &::before {
+        content: "EXAMPLE";
+        font-size: 0.7rem;
+        background-color: $primary;
+        padding: 2px;
+        color: #FFFFFF;
+        position: absolute;
+        top: -20px;
+        left: -1px;
+    }
+
+    p:not(:last-child) {
+        margin-bottom: 0;
+    }
+
+    pre {
+        margin-bottom: 0;
+    }
 }

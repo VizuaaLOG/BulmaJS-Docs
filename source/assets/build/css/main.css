@@ -9354,14 +9354,6 @@ div.code-toolbar > .toolbar span:focus {
   background-color: rgba(0, 0, 0, 0.15);
 }
 
-.code-snippet {
-  padding: 1rem;
-}
-.code-snippet code {
-  background: transparent;
-  color: currentColor;
-}
-
 .feature-icon {
   height: 64px;
 }
@@ -9495,4 +9487,36 @@ h1:hover a, h2:hover a, h3:hover a {
 div.code-toolbar > .toolbar {
   top: -6px;
   right: -1px;
+}
+
+.npm-snippet {
+  padding: 1rem;
+}
+.npm-snippet code {
+  background: transparent;
+  color: currentColor;
+}
+
+.code-snippet.is-example {
+  border: 1px solid #ff3860;
+  padding: 0.5rem;
+  border-radius: 0 5px 5px 5px;
+  position: relative;
+  margin: 2rem 0 1rem 0;
+}
+.code-snippet.is-example::before {
+  content: "EXAMPLE";
+  font-size: 0.7rem;
+  background-color: #ff3860;
+  padding: 2px;
+  color: #FFFFFF;
+  position: absolute;
+  top: -20px;
+  left: -1px;
+}
+.code-snippet.is-example p:not(:last-child) {
+  margin-bottom: 0;
+}
+.code-snippet.is-example pre {
+  margin-bottom: 0;
 }

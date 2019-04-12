@@ -19,6 +19,8 @@
                     <div class="content has-background-white">
                         <h1>{{ $page->title }}</h1>
                         
+                        @include('_partials.docs_stats')
+                        
                         @yield('body')
 
                         @include('_partials.docs_end_nav')
