@@ -5,6 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <link rel="stylesheet" href="{{ mix('css/main.css', 'assets/build') }}">
+        <script>
+            // Simple way allow documentation script examples, i.e. message, to execute
+            // once the correct BulmaJS file has loaded.
+            window.afterBulmaLoad = [];
+            window.addLoadScript = function(callback) { window.afterBulmaLoad.push(callback); }
+        </script>
     </head>
     <body class="has-background-light">
         @include('_partials.navbar')

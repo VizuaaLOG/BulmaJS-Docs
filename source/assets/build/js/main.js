@@ -13622,14 +13622,19 @@ __webpack_require__(/*! ./fontawesome */ "./source/_assets/js/fontawesome.js");
 
 __webpack_require__(/*! ./prism */ "./source/_assets/js/prism.js");
 
-Prism.plugins.customClass.prefix('prism-'); // Load the correct BulmaJS file
+Prism.plugins.customClass.prefix('prism-');
 
-Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["loadScript"])('/assets/bulmajs/' + Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["getSelectedVersion"])() + '/dist/bulma.js', function () {
-  return Bulma.traverseDOM();
-}, function () {
-  Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["loadScript"])('/assets/bulmajs/master/dist/bulma.js', function () {
-    return Bulma.traverseDOM();
-  }, function () {
+function afterLoadScript() {
+  Bulma.traverseDOM();
+
+  for (var i = 0; i < window.afterBulmaLoad.length; i++) {
+    window.afterBulmaLoad[i]();
+  }
+} // Load the correct BulmaJS file
+
+
+Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["loadScript"])('/assets/bulmajs/' + Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["getSelectedVersion"])() + '/dist/bulma.js', afterLoadScript, function () {
+  Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["loadScript"])('/assets/bulmajs/master/dist/bulma.js', afterLoadScript, function () {
     return alert("We was unable to load a version of BulmaJS there may be some display or functionality issues with this site.");
   });
 });
