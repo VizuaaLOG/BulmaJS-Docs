@@ -7,7 +7,7 @@ version: '0.10'
 stats:
     version: 0.1.0
     data_api: true
-    javascript_api: no
+    javascript_api: false
 next:
     - File
     - ../file
