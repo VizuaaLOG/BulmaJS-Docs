@@ -4,10 +4,16 @@ title: Dropdown
 category: 'Core components'
 section: 'body'
 version: '0.10'
-stats: true
-since_version: 0.1.0
-data_api: true
-javascript_api: no
+stats:
+    version: 0.1.0
+    data_api: true
+    javascript_api: no
+next:
+    - File
+    - ../file
+prev:
+    - Alert
+    - ../alert
 ---
 
 Bulma provides a button dropdown component. By default, this component needs Javascript to show/hide the dropdown when the button is clicked/tapped. You can add the `is-hover` class to show/hide the dropdown when the user places there mouse over the button.
@@ -16,6 +22,7 @@ However, the default behaviour for the drop-down component requires a sprinkle o
 
 All you need to do is simply include BulmaJS and the BulmaJS dropdown plugin in your project. We'll handle the rest!
 
+@snippet(['language' => 'html'])
 <div class="dropdown">
     <div class="dropdown-trigger">
         <button class="button is-info" aria-haspopup="true" aria-controls="dropdown-menu2">
@@ -41,3 +48,4 @@ All you need to do is simply include BulmaJS and the BulmaJS dropdown plugin in 
         </div>
     </div>
 </div>
+@endsnippet
