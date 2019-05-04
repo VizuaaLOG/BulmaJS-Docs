@@ -31,4 +31,6 @@ let $versionSelector = document.getElementById('version-selector');
 
 if($versionSelector) {
     $versionSelector.addEventListener('change', changeVersion);
+
+    $versionSelector.value = getSelectedVersion();
 }

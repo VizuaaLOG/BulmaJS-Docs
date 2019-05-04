@@ -13662,6 +13662,7 @@ var $versionSelector = document.getElementById('version-selector');
 
 if ($versionSelector) {
   $versionSelector.addEventListener('change', changeVersion);
+  $versionSelector.value = Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["getSelectedVersion"])();
 }
 
 /***/ }),

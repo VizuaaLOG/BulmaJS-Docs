@@ -31,11 +31,7 @@
                                 <div class="select version-selector">
                                     <select name="version-selector" id="version-selector">
                                         @foreach($page->versions as $version)
-                                            @if($page->documentation_version == $version)
-                                                <option value="{{ $version }}" selected>{{ $version }}</option>
-                                            @else
-                                                <option value="{{ $version }}">{{ $version }}</option>
-                                            @endif
+                                            <option value="{{ $version }}">{{ $version }}</option>
                                         @endforeach
                                     </select>
                                 </div>
