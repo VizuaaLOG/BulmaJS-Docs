@@ -4,8 +4,8 @@ var path = require('path');
 
 module.exports = {
     path: function() {
-        return 'php' + path.normalize('./vendor/bin/jigsaw');
-        
+        return 'php ./' + path.normalize('./vendor/bin/jigsaw');
+
         if (fs.existsSync('./vendor/bin/jigsaw')) {
             return path.normalize('./vendor/bin/jigsaw')
         }
