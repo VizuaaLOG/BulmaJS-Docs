@@ -8,7 +8,7 @@
                 
                 <h2 class="subtitle is-4">Open source, pluggable Javascript library for Bulma.</h2>
 
-                @snippet(['highlight' => false, 'classes' => 'has-background-black-20 has-text-white is-inline-block'])
+                @snippet(['highlight' => false, 'example' => false, 'language' => 'bash', 'classes' => 'is-inline-block'])
                     npm install @vizuaalog/bulmajs
                 @endsnippet
 
@@ -17,7 +17,7 @@
                     <a href="https://github.com/VizuaaLOG/BulmaJS/releases" class="button is-white is-block is-outlined">Download <strong>{{ $page->released_version }}</strong></a>
                 </div>
 
-                <p class="is-italic"><small>BulmaJS is licensed under the <strong><a href="https://github.com/VizuaaLOG/BulmaJS/blob/master/LICENSE" target="_blank">MIT licence</a></strong>. Use away!</small></p>
+                <p class="is-italic"><small><a href="https://vizuaalog.github.io/BulmaJS/">Looking for the old docs?</a> BulmaJS is licensed under the <strong><a href="https://github.com/VizuaaLOG/BulmaJS/blob/master/LICENSE" target="_blank">MIT licence</a></strong>. Use away!</small></p>
             </div>
         </div>
     </div>

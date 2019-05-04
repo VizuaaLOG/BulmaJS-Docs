@@ -7,6 +7,12 @@ import { faBan } from '@fortawesome/free-solid-svg-icons';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { faUpload } from '@fortawesome/free-solid-svg-icons';
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faBackward } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { faForward } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faJs);
 library.add(faPlug);
@@ -16,5 +22,11 @@ library.add(faBan);
 library.add(faLink);
 library.add(faAngleDown);
 library.add(faUpload);
+library.add(faDownload);
+library.add(faTwitter);
+library.add(faBackward);
+library.add(faChevronLeft);
+library.add(faForward);
+library.add(faChevronRight);
 
 dom.watch();

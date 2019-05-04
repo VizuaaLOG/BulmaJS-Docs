@@ -4,31 +4,37 @@ title: Accordion
 category: 'Wikiki components'
 section: 'body'
 version: '0.10'
-stats: true
-since_version: 0.3.0
-data_api: false
-javascript_api: true
+stats:
+    version: 0.3.0
+    data_api: false
+    javascript_api: true
+next:
+    - Calendar
+    - ../calendar
+prev:
+    - Tabs
+    - ../../2-core-components/notification
 ---
 
-<link rel="stylesheet" href="{{ site.url }}/assets/css/bulma-accordion.css">
+<link rel="stylesheet" href="/assets/bulma-accordion.css">
 
-<div class="notification is-warning">
+@notification(['level' => 'warning'])
     <strong>Deprecated</strong> This plugin has now been Deprecated from the core and will be removed in the 1.0 release. If you're still require the JS implementation then it's recommended to use the offical JS library.
-</div>
+@endnotification
 
-<div class="notification is-info">
+@notification(['level' => 'info'])
     This is a BulmaJS ES6 plugin to integrate the JS functionality needed to use <a href="https://wikiki.github.io/components/accordion/" target="_blank">Wikiki's Accordion Bulma extension</a>. BulmaJS does not come with the CSS styling, this will need to be downloaded separately.
-</div>
+@endnotification
 
 To add the Javascript functionality to the accordion HTML, you simply need to create a BulmaJS accordion instance padding the accordion as the `element` option.
 
-{% highlight javascript %}
+@snippet(['language' => 'javascript', 'example' => false])
     Bulma.create('accordion', {
         element: document.querySelector('.accordions')
     });
-{% endhighlight %}
+@endsnippet
 
-<div class="code-example">
+@snippet(['language' => 'html'])
     <section class="accordions" id="accordion-demo1">
         <article class="accordion is-active">
             <div class="accordion-header toggle">
@@ -81,12 +87,12 @@ To add the Javascript functionality to the accordion HTML, you simply need to cr
             </div>
         </article>
     </section>
-</div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        Bulma.create('accordion', {
-            element: document.querySelector('.accordions')
+    <script>
+        window.addLoadScript(function() {
+            Bulma.create('accordion', {
+                element: document.querySelector('.accordions')
+            });
         });
-    });
-</script>
+    </script>
+@endsnippet

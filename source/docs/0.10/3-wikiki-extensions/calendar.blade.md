@@ -4,43 +4,39 @@ title: Calendar
 category: 'Wikiki components'
 section: 'body'
 version: '0.10'
-stats: true
-since_version: 0.3.0
-data_api: false
-javascript_api: true
+stats:
+    version: 0.3.0
+    data_api: false
+    javascript_api: true
+prev:
+    - Accordion
+    - ../accordion
 ---
 
-<link rel="stylesheet" href="{{ site.url }}/assets/css/bulma-calendar.css">
+<link rel="stylesheet" href="/assets/bulma-calendar.css">
 
-<div class="notification is-warning">
+@notification(['level' => 'warning'])
     <strong>Deprecated</strong> This plugin has now been Deprecated from the core and will be removed in the 1.0 release. If you're still require the JS implementation then it's recommended to use the offical JS library.
-</div>
+@endnotification
 
-<div class="notification is-info">
+@notification(['level' => 'info'])
     This is a BulmaJS ES6 plugin to integrate the JS functionality needed to use <a href="https://wikiki.github.io/components/calendar/" target="_blank">Wikiki's Calendar Bulma extension</a>. BulmaJS does not come with the CSS styling, this will need to be downloaded separately.
-</div>
+@endnotification
 
 The simplest form of the calendar plugin is to show an interactive calendar. This is very easy to do. First, you'll need to create an element that will contain your calendar. Then you create the calendar using the `Bulma.create` method.
 
-<div class="code-example">
+@snippet(['language' => 'html'])
     <div id="calendar-demo1"></div>
-</div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        Bulma.create('calendar', {
-            parent: document.getElementById('calendar-demo1'),
-            navButtons: true
+    <script>
+        window.addLoadScript(function() {
+            Bulma.create('calendar', {
+                parent: document.getElementById('calendar-demo1'),
+                navButtons: true
+            });
         });
-    });
-</script>
-
-{% highlight javascript %}
-Bulma.create('calendar', {
-    element: document.getElementById('calendar-demo1'),
-    navButtons: true
-});
-{% endhighlight %}
+    </script>
+@endsnippet
 
 If you would like to hide the navigation buttons simply set `navButtons` to `false`.
 
@@ -49,25 +45,18 @@ You can also use the calendar for input. By attaching it to an input field you c
 
 To begin with, attaching the calendar to an input field couldn't be easier. Simply follow the same steps above, except instead of specifying the container as the element you instead specify an input field.
 
-<div class="code-example">
+@snippet(['language' => 'html'])
     <input type="text" id="calendar-demo3" class="input">
-</div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        Bulma.create('calendar', {
-            parent: document.getElementById('calendar-demo3'),
-            navButtons: true
+    <script>
+        window.addLoadScript(function() {
+            Bulma.create('calendar', {
+                parent: document.getElementById('calendar-demo3'),
+                navButtons: true
+            });
         });
-    });
-</script>
-
-{% highlight javascript %}
-Bulma.create('calendar', {
-    parent: document.getElementById('calendar-demo3'),
-    navButtons: true
-});
-{% endhighlight %}
+    </script>
+@endsnippet
 
 To make the input show a modal, simply add `overlay: true` to the options object.
 

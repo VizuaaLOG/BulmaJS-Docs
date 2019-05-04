@@ -6,6 +6,8 @@
     </div>
     
     <div class="docs-nav-item">
-        <a class="docs-nav-next" href="{{ $page->next[1] }}">{{ $page->next[0] }}</a>
+        @if($page->next)
+            <a class="docs-nav-next" href="{{ $page->next[1] }}">{{ $page->next[0] }}</a>
+        @endif
     </div>
 </div>
