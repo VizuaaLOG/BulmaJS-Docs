@@ -1,2 +1,2 @@
 # BulmaJS Documentation
-This repository contains the new documentation for BulmaJS. These docs are still a WIP but will replace the existing documentation once ready.
+This repository contains the documentation for BulmaJS. If you're looking for the main repository please visit the [BulmaJS repository](https://github.com/VizuaaLOG/BulmaJS).
