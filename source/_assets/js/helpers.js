@@ -4,7 +4,7 @@
  * @returns {String}
  */
 export function getSelectedVersion() {
-    var regex = /documentation\/(?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)/;
+    var regex = /docs\/(?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)/;
     var url = window.location.href;
 
     var match = url.match(regex);

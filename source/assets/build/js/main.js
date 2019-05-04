@@ -13588,7 +13588,7 @@ __webpack_require__.r(__webpack_exports__);
  * @returns {String}
  */
 function getSelectedVersion() {
-  var regex = /documentation\/(?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)/;
+  var regex = /docs\/(?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)/;
   var url = window.location.href;
   var match = url.match(regex);
 
@@ -13639,8 +13639,10 @@ Prism.plugins.customClass.prefix('prism-');
 function afterLoadScript() {
   Bulma.traverseDOM();
 
-  for (var i = 0; i < window.afterBulmaLoad.length; i++) {
-    window.afterBulmaLoad[i]();
+  if (window.afterBulmaLoad) {
+    for (var i = 0; i < window.afterBulmaLoad.length; i++) {
+      window.afterBulmaLoad[i]();
+    }
   }
 } // Load the correct BulmaJS file
 
@@ -13649,7 +13651,18 @@ Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["loadScript"])('/assets/bulmajs/' +
   Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["loadScript"])('/assets/bulmajs/master/dist/bulma.js', afterLoadScript, function () {
     return alert("We was unable to load a version of BulmaJS there may be some display or functionality issues with this site.");
   });
-});
+}); // Version selector
+
+function changeVersion(event) {
+  var newValue = event.target.value;
+  window.location.href = window.location.href.replace(Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["getSelectedVersion"])(), newValue);
+}
+
+var $versionSelector = document.getElementById('version-selector');
+
+if ($versionSelector) {
+  $versionSelector.addEventListener('change', changeVersion);
+}
 
 /***/ }),
 

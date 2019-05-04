@@ -23,24 +23,26 @@
                 <a class="navbar-item" href="/patrons">
                     Patrons
                 </a>
-
-                <div class="navbar-item">
-                    <div class="field">
-                        <div class="control">
-                            <div class="select version-selector">
-                                <select name="version-selector" id="version-selector">
-                                    @foreach($page->versions as $version)
-                                        @if($page->documentation_version == $version)
-                                            <option value="{{ $version }}" selected>{{ $version }}</option>
-                                        @else
-                                            <option value="{{ $version }}">{{ $version }}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
+                
+                @if($page->getPath() != '')
+                    <div class="navbar-item">
+                        <div class="field">
+                            <div class="control">
+                                <div class="select version-selector">
+                                    <select name="version-selector" id="version-selector">
+                                        @foreach($page->versions as $version)
+                                            @if($page->documentation_version == $version)
+                                                <option value="{{ $version }}" selected>{{ $version }}</option>
+                                            @else
+                                                <option value="{{ $version }}">{{ $version }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
     </div>

@@ -8,8 +8,10 @@ Prism.plugins.customClass.prefix('prism-');
 function afterLoadScript() {
     Bulma.traverseDOM();
 
-    for(var i = 0; i < window.afterBulmaLoad.length; i++) {
-        window.afterBulmaLoad[i]();
+    if(window.afterBulmaLoad) {
+        for(var i = 0; i < window.afterBulmaLoad.length; i++) {
+            window.afterBulmaLoad[i]();
+        }
     }
 }
 
@@ -17,3 +19,16 @@ function afterLoadScript() {
 loadScript('/assets/bulmajs/' + getSelectedVersion() + '/dist/bulma.js', afterLoadScript, () => {
     loadScript('/assets/bulmajs/master/dist/bulma.js', afterLoadScript, () => alert("We was unable to load a version of BulmaJS there may be some display or functionality issues with this site."));
 });
+
+// Version selector
+function changeVersion(event) {
+    let newValue = event.target.value;
+    
+    window.location.href = window.location.href.replace(getSelectedVersion(), newValue);
+}
+
+let $versionSelector = document.getElementById('version-selector');
+
+if($versionSelector) {
+    $versionSelector.addEventListener('change', changeVersion);
+}
