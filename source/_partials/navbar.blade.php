@@ -1,7 +1,7 @@
 <nav id="navigation-menu" class="navbar is-primary" data-sticky data-sticky-shadow>
     <div class="container">
         <div class="navbar-brand">
-            <a class="navbar-item" href="https://vizuaalog.github.io/BulmaJS">
+            <a class="navbar-item" href="/">
                 <img src="/assets/images/bulmajs-logo-white.svg" alt="BulmaJS" width="112" height="28">
             </a>
             <div class="navbar-burger burger" data-trigger data-target="navbar">
