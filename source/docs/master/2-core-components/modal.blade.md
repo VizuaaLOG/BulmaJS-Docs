@@ -106,6 +106,15 @@ A modal can also be closed through a button press, although this is controlled w
 
 A modal can be configured so that it is restricted and can only be closed via the Javascript API. This means the user would have to click one of the buttons you provide to them. To enable this pass the `closable: false` option when creating the modal.
 
+## Loading the content via an AJAX request
+@tag(['type' => 'new', 'since' => '0.11'])@endtag
+
+If you would like to load the HTML of your modal via an AJAX request, you can do so by using the `bodyUrl` option. This will perform an AJAX request in the background and replace the content of the modal with the response received from the URL.
+
+@notification(['level' => 'info'])
+Any `script` tags present in the response will be automatically stripped and not included in the modal. If you require additional scripts for your HTML content, then it's advised you have this loaded seperately to the modal.
+@endnotification
+
 ## Adding buttons
 Most modals will need the addition of buttons to provide the user with some control over what to do. By default a modal will contain a close button in the upper right corner. However, you can specify additional buttons.
 
