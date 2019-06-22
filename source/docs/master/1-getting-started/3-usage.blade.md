@@ -49,3 +49,23 @@ modal.open();
 ```
 
 You can find more information on how to use the Modal plugin by visiting the Modal documentation page.
+
+### Plugin Events
+Some plugins will expose events at certain parts of their life. For example, the file plugin can emit an event when it has changed, and will pass the standard Javascript event object as a parameter. You can hook into a plugins event by calling the `on(eventName: String)` method on an instance of the plugin. For example:
+
+```javascript
+    import Modal from '@vizuaalog/bulmajs/src/plugins/Modal';
+
+    var modal = Modal.create({
+        element: document.querySelector('#myModal')
+    });
+
+    modal.on('open', function() {
+        // Do something when a modal is opened
+    });
+
+    // You can now call methods on modal
+    modal.open();
+```
+
+You can see what events a plugin has on the documentation page of each plugin. Most plugins will expose the `init` and `destored` events.

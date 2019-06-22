@@ -8,6 +8,15 @@ stats:
     version: 0.1.0
     data_api: true
     javascript_api: false
+events:
+    init:
+        - Init
+        - on('init')
+        - Called once the plugin has finished initialisation.
+    changed:
+        - Changed
+        - on('changed', eventObject)
+        - Called when the file input has changed. Passes the standard file event object as an argument.
 next:
     - Message
     - ../message

@@ -39,6 +39,10 @@
                         
                         @yield('body')
 
+                        @if($page->events)
+                            @include('_partials.events_table')
+                        @endif
+
                         @include('_partials.docs_end_nav')
                     </div>
                 </div>

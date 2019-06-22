@@ -8,6 +8,11 @@ stats:
     version: 0.1.0
     data_api: true
     javascript_api: false
+events:
+    init:
+        - Init
+        - on('init')
+        - Called once the plugin has finished initialisation.
 next:
     - Notification
     - ../notification

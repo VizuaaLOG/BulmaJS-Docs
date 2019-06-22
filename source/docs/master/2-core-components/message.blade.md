@@ -8,6 +8,27 @@ stats:
     version: 0.1.0
     data_api: true
     javascript_api: true
+events:
+    init:
+        - Init
+        - on('init')
+        - Called once the plugin has finished initialisation.
+    open:
+        - Open
+        - on('open')
+        - Called when the message is opened.
+    close:
+        - Close
+        - on('close')
+        - Called when the message is closed.
+    dismissed:
+        - Dismissed
+        - on('dismissed')
+        - Called when the message has been dismissed.
+    destroy:
+        - Destroyed
+        - on('destroyed')
+        - Called when the message instance is destroyed.
 next:
     - Modal
     - ../modal

@@ -8,6 +8,23 @@ stats:
     version: 0.8.0
     data_api: true
     javascript_api: false
+events:
+    init:
+        - Init
+        - on('init')
+        - Called once the plugin has finished initialisation.
+    open:
+        - Open
+        - on('open')
+        - Called when the alert is opened.
+    close:
+        - Close
+        - on('close')
+        - Called when the alert is closed.
+    destroy:
+        - Destroyed
+        - on('destroyed')
+        - Called when the alert instance is destroyed.
 next:
     - Dropdown
     - ../dropdown

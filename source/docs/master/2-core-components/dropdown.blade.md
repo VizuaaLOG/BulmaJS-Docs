@@ -8,6 +8,19 @@ stats:
     version: 0.1.0
     data_api: true
     javascript_api: false
+events:
+    init:
+        - Init
+        - on('init')
+        - Called once the plugin has finished initialisation.
+    open:
+        - Open
+        - on('open')
+        - Called when the dropdown is opened.
+    close:
+        - Close
+        - on('close')
+        - Called when the dropdown is closed.
 next:
     - File
     - ../file

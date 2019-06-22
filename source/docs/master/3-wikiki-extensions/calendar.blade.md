@@ -8,6 +8,15 @@ stats:
     version: 0.3.0
     data_api: false
     javascript_api: true
+events:
+    init:
+        - Init
+        - on('init')
+        - Called once the plugin has finished initialisation.
+    destroy:
+        - Destroyed
+        - on('destroyed')
+        - Called when the calendar instance is destroyed.
 prev:
     - Accordion
     - ../accordion

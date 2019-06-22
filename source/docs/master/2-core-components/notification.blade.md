@@ -8,6 +8,27 @@ stats:
     version: 0.1.0
     data_api: true
     javascript_api: true
+events:
+    init:
+        - Init
+        - on('init')
+        - Called once the plugin has finished initialisation.
+    open:
+        - Open
+        - on('open')
+        - Called when the notification has opened.
+    close:
+        - Close
+        - on('close')
+        - Called when the notification has closed.
+    dismissed:
+        - Dismissed
+        - on('dismissed')
+        - Called when the notification has been dismissed.
+    destroy:
+        - Destroyed
+        - on('destroyed')
+        - Called when the notification instance is destroyed.
 next:
     - Tabs
     - ../tabs

@@ -8,6 +8,15 @@ stats:
     version: 0.4.0
     data_api: true
     javascript_api: false
+events:
+    init:
+        - Init
+        - on('init')
+        - Called once the plugin has finished initialisation.
+    destroy:
+        - Destroyed
+        - on('destroyed')
+        - Called when the tabs instance is destroyed.
 next:
     - Accordion
     - ../../3-wikiki-extensions/accordion

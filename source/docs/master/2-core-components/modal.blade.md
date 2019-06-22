@@ -8,6 +8,23 @@ stats:
     version: 0.1.0
     data_api: true
     javascript_api: true
+events:
+    init:
+        - Init
+        - on('init')
+        - Called once the plugin has finished initialisation.
+    open:
+        - Open
+        - on('open')
+        - Called when the modal is opened.
+    close:
+        - Close
+        - on('close')
+        - Called when the modal is closed.
+    destroy:
+        - Destroyed
+        - on('destroyed')
+        - Called when the modal instance is destroyed.
 next:
     - Navbar
     - ../navbar
