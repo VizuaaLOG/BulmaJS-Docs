@@ -49,8 +49,7 @@ The modal plugin provides two ways to create a new modal. Either entirely throug
     <script>
         document.querySelector('#example-modal-button-1').addEventListener('click', function(e) {
             //start
-            var modal = Bulma.create('modal', {
-                root: document.getElementById('modal-example-1'),
+            Bulma('#modal-example-1').modal({
                 title: 'Modal title 1',
                 body: '<p class="image is-4by3"><img src="https://bulma.io/images/placeholders/1280x960.png" alt=""></p>',
                 buttons: [
@@ -65,14 +64,19 @@ The modal plugin provides two ways to create a new modal. Either entirely throug
                         onClick: function() { alert('Close button pressed'); }
                     }
                 ]
-            });
+            }).open();
             //end
-
-            modal.open();
         });
     </script>
 @endsnippet
 
+Since BulmaJS 0.11 you can call specify the root container of the modal using the new `Bulma()` syntax. This allows the modal instance to be directly added to that parent. This provides increased flexability allowing you to grab that modal instance from another part of the application, for example:
+
+@snippet(['language' => 'javascript', 'example' => false])
+    Bulma('#modal-example-1').data('modal').open();
+@endsnippet
+
+This will return the modal instance you created above. Do note that using the alternative `Bulma.create` syntax will not create this reference as it has certain use cases.
 
 ### HTML
 @snippet(['language' => 'html'])
