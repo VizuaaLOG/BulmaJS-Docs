@@ -13588,6 +13588,8 @@ __webpack_require__.r(__webpack_exports__);
  * @returns {String}
  */
 function getSelectedVersion() {
+  var major = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+  var minor = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
   var regex = /docs\/(?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)/;
   var url = window.location.href;
   var match = url.match(regex);
@@ -13596,7 +13598,15 @@ function getSelectedVersion() {
     return 'master';
   }
 
-  return match[1] + '.' + match[3];
+  if (major && minor) {
+    return match[1] + '.' + match[3];
+  }
+
+  if (major) {
+    return match[1];
+  }
+
+  return match[3];
 }
 /**
  * Load a script into the document.
@@ -13637,7 +13647,11 @@ __webpack_require__(/*! ./prism */ "./source/_assets/js/prism.js");
 Prism.plugins.customClass.prefix('prism-');
 
 function afterLoadScript() {
-  Bulma.traverseDOM();
+  if (Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["getSelectedVersion"])(true, false) == 0 && Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["getSelectedVersion"])(false, true) <= 10) {
+    Bulma.traverseDOM();
+  } else {
+    Bulma.parseDocument();
+  }
 
   if (window.afterBulmaLoad) {
     for (var i = 0; i < window.afterBulmaLoad.length; i++) {
