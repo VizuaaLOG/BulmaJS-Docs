@@ -3,7 +3,7 @@
  * 
  * @returns {String}
  */
-export function getSelectedVersion() {
+export function getSelectedVersion(major = true, minor = true) {
     var regex = /docs\/(?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)/;
     var url = window.location.href;
 
@@ -13,7 +13,15 @@ export function getSelectedVersion() {
         return 'master';
     }
 
-    return match[1] + '.' + match[3];
+    if(major && minor) {
+        return match[1] + '.' + match[3];
+    }
+
+    if(major) {
+        return match[1];
+    }
+
+    return match[3];
 }
 
 /**

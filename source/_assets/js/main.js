@@ -6,7 +6,11 @@ require('./prism');
 Prism.plugins.customClass.prefix('prism-');
 
 function afterLoadScript() {
-    Bulma.traverseDOM();
+    if(getSelectedVersion(true, false) == 0 && getSelectedVersion(false, true) <= 10) {
+        Bulma.traverseDOM();
+    } else {
+        Bulma.parseDocument();
+    }
 
     if(window.afterBulmaLoad) {
         for(var i = 0; i < window.afterBulmaLoad.length; i++) {
