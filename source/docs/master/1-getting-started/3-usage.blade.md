@@ -69,3 +69,63 @@ Some plugins will expose events at certain parts of their life. For example, the
 ```
 
 You can see what events a plugin has on the documentation page of each plugin. Most plugins will expose the `init` and `destored` events.
+
+### Grabbing a plugin instance
+In some situations you may want to attach events to a plugin instance, however, if the plugin has been created automatically for you via our DOM API you may be wondering how to attach such an event.
+
+Since Bulma 0.11 most plugins will save an instance of themselves to the parent element. You can then grab this element and pull the instance of the plugin, allowing you to then call the various API methods.
+
+For example, let's say we want to listen to when a dropdown opens. First, we need have a dropdown component on our page.
+
+@snippet(['language' => 'html'])
+<div class="dropdown" id="grabbing-plugin-instance-example">
+    <div class="dropdown-trigger">
+        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+        <span>Dropdown button</span>
+        <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+        </span>
+        </button>
+    </div>
+    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+            <a class="dropdown-item">Dropdown item</a>
+            <a class="dropdown-item">Other dropdown item</a>
+        </div>
+    </div>
+</div>
+@endsnippet
+
+Now that we have a dropdown on our page, you can see BulmaJS has already applied it's magic Javascript dust so that our dropdown behaves as we expact when clicking on it. Now, we need to grab the instance of the Dropdown plugin controlling that component, we can do so by using the new element select feature in 0.11.
+
+**NOTE: **`window` is being used here due to some specific situations with how the docs loads these snippets and may not be suitable for your project.
+
+@snippet(['language' => 'javascript'])
+    <script>
+        window.addLoadScript(function() {
+            //start
+            window.dropdown = Bulma('#grabbing-plugin-instance-example').data('dropdown');
+            //end
+        });
+    </script>
+@endsnippet
+
+Since BulmaJS 0.11 the majority of the core plugins will store a reference to themselves within memory, this is stored within a 'cache' within the Bulma core. A identifier is added to the HTMLElement to help Bulma keep track of the index the element's data is stored within, this works in a similar way to jQuery's data system and was heavily inspired by that.
+
+Calling the `.data` method will lookup the key, in this case the plugin's unique ID, and then return that element's instance of the plugin. This allows you to then call the normal API methods the plugin exposes. In this example, we want to attach to the `open` event.
+
+@snippet(['language' => 'javascript'])
+    <script>
+        window.addLoadScript(function() {
+            //start
+            window.dropdown.on('open', function() {
+                alert('Magic!');
+            });
+            //end
+        });
+    </script>
+@endsnippet
+
+This syntax works with the majority of the core plugins where it makes sense, if you think a plugin is incorrectly missing this feature please open an issue or a PR!
+
+If your using `Bulma.create` it'll not create this reference. It's more of a syntax sugar for instances that are automatically created as using `Bulma.create` will provide you with the instance as it has always done.
