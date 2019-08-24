@@ -28,7 +28,7 @@ Once BulmaJS has been downloaded you can now include it in your project. Within 
 import Bulma from '@vizuaalog/bulmajs';
 
 // Only the plugins you need
-import Navbar from '@vizuaalog/bulmajs/src/plugins/Navbar';
+import Navbar from '@vizuaalog/bulmajs/src/plugins/navbar';
 ```
 
 That's it! BulmaJS is now ready and working in your project. If you have any problems getting BulmaJS working in your project, please open an issue on [Github]({{ $page->github_issues_url }}).
