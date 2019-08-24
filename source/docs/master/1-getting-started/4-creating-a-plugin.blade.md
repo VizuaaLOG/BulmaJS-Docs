@@ -46,20 +46,28 @@ class ClickMe {
 }
 ```
 
-We now want to tell BulmaJS what class this plugin is responsible for. You can do this by specifying a static `getRootClass` method. BulmaJS will use this method to find and attach your plugin to the relevent elements.
-
-```javascript
-static getRootClass() {
-    return 'click-me';
-}
-```
-
-Your plugin will also need a constructor which is responsible for setting up your plugin. A good use is for parsing the options object, or registering events. We're going to use the constructor to register our click event onto the `element` element provided via the options object. We will get back to how `element` is passed through later on.
+Your plugin will need a constructor which is responsible for setting up your plugin. A good use is for parsing the options object, or registering events. We're going to use the constructor to register our click event onto the `element` element provided via the options object. We will get back to how `element` is passed through later on.
 
 ```javascript
 constructor(options) {
     options.element.addEventListener('click', this.handleClick.bind(this));
 }
+```
+
+If your plugin also needs to support being automatically instanced via the `parseDocument` process, you can do this by specifying a static `parseDocument` method. The method will accept the context, this is passed from the core's `parseDocument` method. You then use your own selector logic that will match the HTML element you are looking for, and then be able to loop over each one and follow the logic you need to create a new instance.
+
+```javascript
+...
+static parseDocument(context) {
+    let elements = context.querySelectorAll('.click-me');
+
+    Bulma.each(elements, (element) => {
+        new ClickMe({
+            element: element
+        });
+    });
+}
+...
 ```
 
 Depending on what your plugin does you can now add the additional methods and logic to your class. In this example we'll also add our event handler.
@@ -121,3 +129,39 @@ export default ClickMe;
 ```
 
 You have now created your own BulmaJS plugin. A quick note about the BulmaJS import, if you do not self-register your plugin i.e. ask your users to register themselves, and you do not use any BulmaJS helper methods then you can remove the import, and NPM install.
+
+## Adding custom events
+Since BulmaJS 0.11 you can setup custom events users of your plugin can listen to. This is useful for providing 'hooks' during certain lifecycle events of your plugin. To expand on the Click Me plugin created above, we'll add a new custom event allowing users of our plugin to run custom code when the click handler is called.
+
+Adding a custom event is very easy, simply call `this.trigger('eventname')`. Let's update our `handleClick` method.
+
+```javascript
+...
+handleClick(event) {
+    alert('You clicked on an element with the class click-me');
+
+    this.trigger('click');
+}
+...
+```
+
+Your users can then use the `on` method to listen to these events. The caveat of this is that any events called before the event is listened to will not be included.
+
+## Storing the plugin instance on the element
+If your plugin supports being instantiated automatically via BulmaJS's `parseDocument` process then you may want to store the instance on the element. This will allow your users to grab the instance and then call methods on the plugin.
+
+This has been possible since BulmaJS 0.11. Simply, update your `parseDocument` method to get the Bulma element instance and then save the new instance to it's data store.
+
+```javascript
+...
+static parseDocument(context) {
+    let elements = context.querySelectorAll('.click-me');
+
+    Bulma.each(elements, (element) => {
+        Bulma(element)
+            .data('click-me', new ClickMe(configObject))
+            .data('click-me');
+    });
+}
+...
+```
