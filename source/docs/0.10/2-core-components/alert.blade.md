@@ -203,6 +203,9 @@ You can choose to not show the alert's header by setting the `showHeader` option
 </script>
 @endsnippet
 
+# Closing via ESC or clicking outside
+The Alert plugin is a wrapper around the Modal plugin. This means if you pass `closable: true` it'll enable the closing features that Modals have. This includes a close button being added in the corner, the ability to close the modal when clicking outside and the ability to close the modal when pressing the `ESC` key.
+
 # Destroying/closing the alert
 
 <div class="tags has-addons">
