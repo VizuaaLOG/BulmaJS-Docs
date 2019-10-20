@@ -9,7 +9,7 @@ return [
         '0.10',
     ],
     'github_issues_url' => 'https://github.com/VizuaaLOG/BulmaJS/issues',
-    'released_version' => '0.10.0',
+    'released_version' => '0.10.1',
     'documentation_version' => '0.10',
     'is' => function ($page, $section) {
         return str_contains($page->getPath(), $section) ? 'is-active' : '';
