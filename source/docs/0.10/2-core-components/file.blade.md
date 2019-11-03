@@ -55,3 +55,10 @@ But what about a multiple input field? If you want to use the Bulma file compone
     </label>
 </div>
 @endsnippet
+
+## Dynamically inserted file fields
+If your application is dynamically inserting file fields, you will need to manually instantiate them. You can do this by manually accessing the plugin's constructor method and passing it the relevant options. For example:
+
+```javascript
+new Bulma.plugins.file.handler({element: <your new file element>});
+```
