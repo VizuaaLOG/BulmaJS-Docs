@@ -33,18 +33,23 @@ window.bulmaOptions {
 You can then manually parse the document by calling `Bulma.traverseDOM()`. You can also provide a custom scope to the `traverseDOM` function by providing a HTMLElement as the first parameter, this defaults to `document`.
 
 ### Using Javascript
-If you would prefer to create the plugin instances within Javascript, you can do this very easily. Plugins that support the Javascript API can be created by using the `Bulma.create` method. This method will take the plugin key, such as `modal`, and an object containing the options for that plugin. The documentation page for a plugin will explain the options it has available.
+If you would prefer to create the plugin instances within Javascript, you can do this very easily. Plugins that support the Javascript API can be created by using their method on the main Bulma object. This method can take an object containing the options for that plugin. The documentation page for a plugin will explain the options it has available.
 
-For example, using `Bulma.create` you can easily link a Javascript modal instance to a Modal element:
+For example, to create a new Modal you would do the following:
 
 ```javascript
 import Modal from '@vizuaalog/bulmajs/src/plugins/Modal';
 
-var modal = Modal.create({
-    element: document.querySelector('#myModal')
+var modal = Bulma().modal({
+    title: 'Hello world',
+    body: 'This is the body'
 });
 
 // You can now call methods on modal
+modal.open();
+
+// Or if you have the HTML already
+var modal = Bulma('.my-modal').modal();
 modal.open();
 ```
 
@@ -56,9 +61,7 @@ Some plugins will expose events at certain parts of their life. For example, the
 ```javascript
     import Modal from '@vizuaalog/bulmajs/src/plugins/Modal';
 
-    var modal = Modal.create({
-        element: document.querySelector('#myModal')
-    });
+    var modal = Bulma(document.querySelector('#myModal')).modal();
 
     modal.on('open', function() {
         // Do something when a modal is opened
