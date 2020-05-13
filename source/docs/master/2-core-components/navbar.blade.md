@@ -34,6 +34,14 @@ You can control the offset of the navbar using `data-sticky-offset` this access 
 
 You can also add `data-sticky-shadow` to your navbar element, this will add the `has-shadow` class to the navbar when it becomes sticky.
 
+If you ever need to dynamically enable/disable a navbar's sticky state, you can do so by using the `enableSticky` and `disableSticky` methods.
+
+@snippet(['example' => false, 'language' => 'javascript'])
+let navbar = Bulma('.navbar').data('navbar');
+navbar.enableSticky();
+navbar.disableSticky();
+@endsnippet
+
 ## Hide the navbar when scrolling
 It can sometimes be useful to hide the navbar when your user is scrolling down, and then show it again when scrolling up. As of `0.7.0` the navbar plugin provides this functionality. To enable it, add the `data-hide-on-scroll` attribute to your navbar element. Do note this also needs `data-sticky` to be enabled as well.
 
@@ -51,3 +59,11 @@ When the navbar is hidden the `is-hidden-scroll` class is added to it, allowing 
     transform: translateY(-100%);
 }
 ```
+
+If you ever need to dynamically enable/disable a navbar's hide when scrolling state, you can do so by using the `enableHideOnScroll` and `disableHideOnScroll` methods.
+
+@snippet(['example' => false, 'language' => 'javascript'])
+let navbar = Bulma('.navbar').data('navbar');
+navbar.enableHideOnScroll();
+navbar.disableHideOnScroll();
+@endsnippet
