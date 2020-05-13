@@ -64,3 +64,20 @@ But what about a multiple input field? If you want to use the Bulma file compone
     </label>
 </div>
 @endsnippet
+
+## Get the filename in Javascript
+If you would like to get the filename for a given File plugin instance you can do so using the `getFilename` method.
+
+This ties in with the new `data` method added to Bulma allowing you get instances of plugins without needing a direct reference. For example you would be able to do the following:
+```javascript
+let myFile = Bulma('.some-file-selector').data('file');
+console.log(myFile.getFilename()) // This will be the filename as shown within the component
+```
+
+Combining this with the `on` method you'll be able to dynamically update any background logic you have:
+```javascript
+let myFile = Bulma('.some-file-selector').data('file');
+myFile.on('changed', function() {
+    let filename = myFile.getFilename();
+});
+```
