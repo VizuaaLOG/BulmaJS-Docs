@@ -12,6 +12,10 @@ prev:
     - ../3-usage
 ---
 
+@notification(['level' => 'info'])
+This page has not been updated for 0.11, an example plugin is being worked on to help illustrate how everything ties together and is configured.
+@endnotification
+
 BulmaJS uses a simple plugin system allowing anyone to create their own and hook into the BulmaJS core. A BulmaJS plugin is a simple class with some static methods to integrate into the core's API. Within this short guide we're going to create a simple plugin that attaches a click handler to any element with the class `click-me`.
 
 ## Setup
