@@ -130,3 +130,12 @@ You can also choose to have the content boxes change by just hoving over the tab
         </div>
     </div>
 @endsnippet
+
+## Dynamically change the active tab
+If you would like to change the active tab programmatically, you can do so via the `setActive` method. This method accepts a single parameter which is a `number` representing the index of the tab you would like to change to, starting at `0`.
+
+For example to change to the second tab, you could do the following.
+```javascript
+let tabs = Bulma('.tabs-class').data('tabs');
+tabs.setActive(2) // Will set the third tab as active
+```
