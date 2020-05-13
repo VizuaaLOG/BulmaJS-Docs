@@ -42,15 +42,17 @@ The notification component can be used to provide a note to the user. One use ca
 ## Creating a notification
 BulmaJS doesn't stop you from creating a notification via HTML. In fact, this is the easiest way to get started. However, in some situations, you may need to create your notification via Javascript. With BulmaJS this is easy!
 
-@snippet(['language' => 'html'])
+@snippet
 <div id="example-notification"></div>
 
 <script>
     window.addLoadScript(function() {
-        Bulma.create('notification', {
+        //start
+        Bulma('#example-notification').notification({
             body: 'Example notification',
-            parent: document.getElementById('example-notification')
+            color: 'info'
         }).show();
+        //end
     })
 </script>
 @endsnippet
@@ -68,16 +70,17 @@ You can also supply additional options to a notification when you're creating it
 ## Showing/hiding a notification
 In some situations, you may wish to show/hide a notification via Javascript. Creating a notification via the Javascript API returns the `notification` object allowing you to call the `show()` and `hide()` methods on it.
 
-@snippet(['language' => 'html'])
+@snippet
 <div id="dismissable-notification"></div>
 
 <script>
     window.addLoadScript(function() {
-        Bulma.create('notification', {
+        //start
+        Bulma('#dismissable-notification').notification({
             body: 'I am always visible until you close me manually.',
-            parent: document.getElementById('dismissable-notification'),
             isDismissable: true
         }).show();
+        //end
     })
 </script>
 @endsnippet
