@@ -1,5 +1,7 @@
 <h1>Events</h1>
 
+<p>These are the events that this plugin emits when various actions happen. These can be listened to by using the <code>on</code> method.</p>
+
 <table class="table is-striped">
     <thead>
         <tr>
