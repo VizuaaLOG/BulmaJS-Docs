@@ -48,7 +48,7 @@ Creating an alert dialog is as easy as creating any other plugin instance within
 <script>
     document.querySelector('#example-alert-button-1').addEventListener('click', function(e) {
         //start
-        Bulma.create('alert', {
+        Bulma().alert({
             type: 'danger',
             title: 'This is an alert!',
             body: 'Ooohh what button you gonna click?',
@@ -72,7 +72,7 @@ Whether you're just informing your user of something, showing them a success mes
 <script>
     //start
     document.querySelector('#example-alert-button-2').addEventListener('click', function(e) {
-        Bulma.create('alert', {
+        Bulma().alert({
             type: 'info',
             title: 'This is an alert!',
             body: 'Ooohh what button you gonna click?',
@@ -82,7 +82,7 @@ Whether you're just informing your user of something, showing them a success mes
     });
 
     document.querySelector('#example-alert-button-3').addEventListener('click', function(e) {
-        Bulma.create('alert', {
+        Bulma().alert({
             type: 'success',
             title: 'This is an alert!',
             body: 'Ooohh what button you gonna click?',
@@ -92,7 +92,7 @@ Whether you're just informing your user of something, showing them a success mes
     });
 
     document.querySelector('#example-alert-button-4').addEventListener('click', function(e) {
-        Bulma.create('alert', {
+        Bulma().alert({
             type: 'warning',
             title: 'This is an alert!',
             body: 'Ooohh what button you gonna click?',
@@ -102,7 +102,7 @@ Whether you're just informing your user of something, showing them a success mes
     });
 
     document.querySelector('#example-alert-button-5').addEventListener('click', function(e) {
-        Bulma.create('alert', {
+        Bulma().alert({
             type: 'danger',
             title: 'This is an alert!',
             body: 'Ooohh what button you gonna click?',
@@ -123,14 +123,14 @@ What's the point in a popup if you can't use it for input? You can specify an `o
 <script>
     document.querySelector('#example-alert-button-6').addEventListener('click', function(e) {
         //start
-        Bulma.create('alert', {
+        Bulma().alert({
             type: 'danger',
             title: 'This is an alert!',
             body: 'Ooohh what button you gonna click?',
             confirm: {
                 label: 'Confirm!',
                 onClick: function() {
-                    Bulma.create('alert', {
+                    Bulma().alert({
                         title: 'Confirmed',
                         body: 'You clicked confirm!'
                     });
@@ -139,7 +139,7 @@ What's the point in a popup if you can't use it for input? You can specify an `o
             cancel: {
                 label: 'Cancel!',
                 onClick: function() {
-                    Bulma.create('alert', {
+                    Bulma().alert({
                         title: 'Cancelled',
                         body: 'You clicked cancel!'
                     });
@@ -166,7 +166,7 @@ If you would like to adjust the style of the buttons, maybe changing them to inc
 <script>
     document.querySelector('#example-alert-button-8').addEventListener('click', function(e) {
         //start
-        Bulma.create('alert', {
+        Bulma().alert({
             type: 'danger',
             title: 'Ooooo custom',
             body: 'Classes...',
@@ -209,7 +209,7 @@ You can choose to not show the alert's header by setting the `showHeader` option
 <script>
     document.querySelector('#example-alert-button-7').addEventListener('click', function(e) {
         //start
-        Bulma.create('alert', {
+        Bulma().alert({
             type: 'danger',
             body: 'See no header',
             confirm: 'Awesome!',
@@ -237,7 +237,7 @@ You can specify if a button closes and/or destroys the alert instance by specify
 <script>
     document.querySelector('#example-alert-button-9').addEventListener('click', function(e) {
         //start
-        Bulma.create('alert', {
+        Bulma().alert({
             type: 'danger',
             title: 'Alert',
             body: 'Try clicking the buttons!',
