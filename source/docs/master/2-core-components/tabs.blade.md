@@ -7,7 +7,7 @@ version: 'master'
 stats:
     version: 0.4.0
     data_api: true
-    javascript_api: false
+    javascript_api: yes
 events:
     init:
         - Init
@@ -132,6 +132,7 @@ You can also choose to have the content boxes change by just hoving over the tab
 @endsnippet
 
 ## Dynamically change the active tab
+@tag(['type' => 'new', 'since' => '0.11'])@endtag
 If you would like to change the active tab programmatically, you can do so via the `setActive` method. This method accepts a single parameter which is a `number` representing the index of the tab you would like to change to, starting at `0`.
 
 For example to change to the second tab, you could do the following.

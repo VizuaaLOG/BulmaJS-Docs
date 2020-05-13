@@ -6,8 +6,8 @@ section: 'body'
 version: 'master'
 stats:
     version: 0.8.0
-    data_api: true
-    javascript_api: false
+    data_api: false
+    javascript_api: true
 events:
     init:
         - Init

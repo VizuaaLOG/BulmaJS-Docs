@@ -7,7 +7,7 @@ version: 'master'
 stats:
     version: 0.1.0
     data_api: true
-    javascript_api: false
+    javascript_api: true
 events:
     init:
         - Init
@@ -34,6 +34,7 @@ You can control the offset of the navbar using `data-sticky-offset` this access 
 
 You can also add `data-sticky-shadow` to your navbar element, this will add the `has-shadow` class to the navbar when it becomes sticky.
 
+@tag(['type' => 'new', 'since' => '0.11'])@endtag
 If you ever need to dynamically enable/disable a navbar's sticky state, you can do so by using the `enableSticky` and `disableSticky` methods.
 
 @snippet(['example' => false, 'language' => 'javascript'])
@@ -60,6 +61,7 @@ When the navbar is hidden the `is-hidden-scroll` class is added to it, allowing 
 }
 ```
 
+@tag(['type' => 'new', 'since' => '0.11'])@endtag
 If you ever need to dynamically enable/disable a navbar's hide when scrolling state, you can do so by using the `enableHideOnScroll` and `disableHideOnScroll` methods.
 
 @snippet(['example' => false, 'language' => 'javascript'])

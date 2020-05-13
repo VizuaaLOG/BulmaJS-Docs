@@ -7,7 +7,7 @@ version: 'master'
 stats:
     version: 0.1.0
     data_api: true
-    javascript_api: false
+    javascript_api: true
 events:
     init:
         - Init
@@ -66,6 +66,7 @@ But what about a multiple input field? If you want to use the Bulma file compone
 @endsnippet
 
 ## Get the filename in Javascript
+@tag(['type' => 'new', 'since' => '0.11'])@endtag
 If you would like to get the filename for a given File plugin instance you can do so using the `getFilename` method.
 
 This ties in with the new `data` method added to Bulma allowing you get instances of plugins without needing a direct reference. For example you would be able to do the following:

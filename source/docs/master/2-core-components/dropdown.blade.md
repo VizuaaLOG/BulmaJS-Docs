@@ -7,7 +7,7 @@ version: 'master'
 stats:
     version: 0.1.0
     data_api: true
-    javascript_api: false
+    javascript_api: yes
 events:
     init:
         - Init
