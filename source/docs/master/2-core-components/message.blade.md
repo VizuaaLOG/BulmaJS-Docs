@@ -42,12 +42,20 @@ The message component can be used to provide a note to the user. One use case co
 ## Creating a message
 BulmaJS doesn't stop you from creating a message via HTML. In fact, this is the easiest way to get started. However, in some situation, you may need to create your message via Javascript. With BulmaJS this is easy!
 
-@snippet(['isScript' => true])
-Bulma.create('message', {
-    title: 'Optional title',
-    body: 'I\'m a large message.',
-    parent: document.getElementById('size-message')
-});
+@snippet
+<div class="message-example-1"></div>
+
+<script>
+    window.addLoadScript(function() {
+        //start
+        Bulma('.message-example-1').message({
+            title: 'Optional title',
+            body: 'I\'m a large message.',
+            parent: document.getElementById('size-message')
+        });
+        //end
+    });
+</script>
 @endsnippet
 
 In the above example, we're providing a `title`, `body` and `parent`. `title` and `body` are self-explanatory, these will be placed in the same positions within the message component. `parent` is where you supply the parent element. This element will be the container for this message. The message will be appended to its parent once it has been constructed.
@@ -63,12 +71,20 @@ You can also supply additional options to a message when you're creating it. The
 ## Showing/hiding a message
 In some situations, you may wish to show/hide a message via Javascript. Creating a message via the Javascript API returns the `message` object allowing you to call the `show()` and `hide()` messages on it.
 
-@snippet(['isScript' => true])
-Bulma.create('message', {
-    title: 'Optional title',
-    body: 'I\'m a large message.',
-    parent: document.getElementById('size-message')
-}).show();
+@snippet
+<div class="message-example-2"></div>
+
+<script>
+    window.addLoadScript(function() {
+        //start
+        Bulma('.message-example-2').message({
+            title: 'Optional title',
+            body: 'I\'m a large message.',
+            parent: document.getElementById('size-message')
+        }).show();
+        //end
+    });
+</script>
 @endsnippet
 
 # Without Javascript
