@@ -50,10 +50,10 @@ BulmaJS doesn't stop you from creating a message via HTML. In fact, this is the 
         //start
         Bulma('.message-example-1').message({
             title: 'Optional title',
-            body: 'I\'m a large message.',
-            parent: document.getElementById('size-message')
-        });
+            body: 'I\'m a large message.'
+        })
         //end
+        .show();
     });
 </script>
 @endsnippet
