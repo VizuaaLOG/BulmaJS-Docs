@@ -3,7 +3,12 @@
 return [
     'production' => false,
     'baseUrl' => '',
-    'collections' => [],
+    'collections' => [
+        'posts' => [
+            'path' => 'blog/{published_date|Y-m}/{filename}',
+            'author' => 'VizuaaLOG (Tom)'
+        ]
+    ],
     'versions' => [
         'master',
         '0.10',

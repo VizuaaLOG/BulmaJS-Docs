@@ -20,16 +20,7 @@
         @include('_partials.navbar')
 
         <div class="docs-wrapper">
-            <div class="container">
-                <div class="content has-background-white">
-                    <h1 class="is-marginless">{{ $page->title }}</h1>
-                    <p class="blog-published-date"><strong>Published {{ \Carbon\Carbon::parse($page->published_at)->format('Y/m/d') }}</strong></p>
-
-                    <p class="is-size-5 has-text-primary">{{ $page->intro }}</p>
-
-                    @yield('body')
-                </div>
-            </div>
+            @yield('body')
 
             <footer class="footer">
                 <div class="content has-text-centered">

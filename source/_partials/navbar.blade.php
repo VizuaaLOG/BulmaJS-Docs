@@ -20,6 +20,10 @@
                     Documentation
                 </a>
 
+                <a class="navbar-item" href="/blog">
+                    Blog
+                </a>
+
                 <a class="navbar-item" href="/patrons">
                     Patrons
                 </a>
