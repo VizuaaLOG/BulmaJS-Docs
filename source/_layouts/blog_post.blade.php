@@ -11,7 +11,12 @@
                     {{ $page->intro }}
                 </h2>
                 <p>
-                    Published {{ \Carbon\Carbon::parse($page->published_date)->diffForHumans() }}
+                    Published
+                    @if(\Carbon\Carbon::parse($page->published_date)->isToday())
+                        today
+                    @else
+                        {{ \Carbon\Carbon::parse($page->published_date)->diffForHumans() }}
+                    @endif
                     by {{ $page->author }}
                 </p>
             </div>

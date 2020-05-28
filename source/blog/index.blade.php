@@ -23,7 +23,12 @@
                             <a href="{{ $post->getUrl() }}" class="has-text-primary">{{ $post->title }}</a>
                         </p>
                         <p class="subtitle">
-                            {{ \Carbon\Carbon::parse($post->published_date)->diffForHumans() }}
+                            Published&nbsp;
+                            @if(\Carbon\Carbon::parse($post->published_date)->isToday())
+                                today
+                            @else
+                                {{ \Carbon\Carbon::parse($post->published_date)->diffForHumans() }}
+                            @endif
                         </p>
                         <p>
                             {{ $post->intro }}
