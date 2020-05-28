@@ -2,7 +2,7 @@
 
 return [
     'production' => true,
-    'baseUrl' => '',
+    'baseUrl' => 'https://bulmajs.tomerbe.co.uk',
     'collections' => [
         'posts' => [
             'path' => 'blog/{published_date|Y-m}/{filename}',
