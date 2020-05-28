@@ -33,7 +33,7 @@ prev:
     - ../../1-getting-started/4-creating-a-plugin
 ---
 
-There's times where you need to alert something to your visitor, maybe you want to warn them before they delete a record. You could use the build in browser's `alert` method, but that doesn't follow your branding does it?
+There's times where you need to alert something to your visitor, maybe you want to warn them before they delete a record. You could use the browser's built-in `alert` method, but that doesn't follow your branding does it?
 
 This alert plugin creates a nice wrapper around the modal plugin already present, with the ability for multiple 'types' and cancel/confirm events, the alert plugin is a great addition to any website.
 

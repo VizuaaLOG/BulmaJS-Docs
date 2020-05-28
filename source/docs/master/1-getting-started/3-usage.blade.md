@@ -30,7 +30,7 @@ window.bulmaOptions {
 }
 ```
 
-You can then manually parse the document by calling `Bulma.traverseDOM()`. You can also provide a custom scope to the `traverseDOM` function by providing a HTMLElement as the first parameter, this defaults to `document`.
+You can then manually parse the document by calling `Bulma.parseDocument(context: HTMLElement)`. You can also provide a custom scope to the `parseDocument` function by providing a HTMLElement as the first parameter, this defaults to `document`.
 
 ### Using Javascript
 If you would prefer to create the plugin instances within Javascript, you can do this very easily. Plugins that support the Javascript API can be created by using their method on the main Bulma object. This method can take an object containing the options for that plugin. The documentation page for a plugin will explain the options it has available.
