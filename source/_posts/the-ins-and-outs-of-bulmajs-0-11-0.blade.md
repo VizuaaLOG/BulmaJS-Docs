@@ -3,8 +3,8 @@ extends: _layouts.blog_post
 title: The Ins and Outs of BulmaJS 0.11.0
 category: 'Blog'
 section: content
-published: false
-published_date: 2020-05-14
+published: true
+published_date: 2020-05-28
 intro: I'm writing this as version 0.11.0 is coming ever so close to release. Currently, giving the docs a read over and adding this handy little blog. 0.11 is the biggest update since I released BulmaJS almost 3 years ago. So, let's dive in!
 ---
 
