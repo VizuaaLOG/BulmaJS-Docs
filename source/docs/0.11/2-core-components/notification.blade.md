@@ -85,7 +85,7 @@ In some situations, you may wish to show/hide a notification via Javascript. Cre
 </script>
 @endsnippet
 
-# Without Javascript
+## Without Javascript
 If you would rather stay away from writing your own Javascript, you don't have too! BulmaJS extends the notification component's HTML to allow you to specify the options via data attributes. The only one you will need to use is the `data-dismiss-interval` this will take an integer of the number of milliseconds to wait before hiding the notification.
 
 If you would like to provide the user with the ability to dismiss a notification, simply include the delete button!

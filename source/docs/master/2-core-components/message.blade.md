@@ -87,7 +87,7 @@ In some situations, you may wish to show/hide a message via Javascript. Creating
 </script>
 @endsnippet
 
-# Without Javascript
+## Without Javascript
 If you would rather stay away from writing your own Javascript, you don't have too! BulmaJS extends the message component's HTML to allow you to specify the options via data attributes. The only one you will need to use is the `data-dismiss-interval` this will take an integer of the number of milliseconds to wait before hiding the message.
 
 If you would like to provide the user with the ability to dismiss a message, simply include the delete button!

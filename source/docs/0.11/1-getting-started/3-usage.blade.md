@@ -14,7 +14,7 @@ prev:
 
 BulmaJS is fairly straightforward to use. There are two ways you can create and interact with BulmaJS plugins. Some plugins may only implement one of these methods, depending on the plugin. However, this will be visually displayed on the plugins documentation page.
 
-### Using the DOM
+## Using the DOM
 Most BulmaJS plugins have a DOM API that will allow you to create and customise the plugins. Creating a plugin instance via the DOM API is as simple as creating the Bulma component via HTML and classes. The BulmaJS plugin will then pick up the element once it is loaded and set up all of the necessary features.
 
 For example, the Navbar plugin requires no additional Javascript, simply import the plugin and as long as you have the correct HTML, as per Bulma's documentation, you will have a responsive navigation menu.
@@ -32,7 +32,7 @@ window.bulmaOptions {
 
 You can then manually parse the document by calling `Bulma.parseDocument(context: HTMLElement)`. You can also provide a custom scope to the `parseDocument` function by providing a HTMLElement as the first parameter, this defaults to `document`.
 
-### Using Javascript
+## Using Javascript
 If you would prefer to create the plugin instances within Javascript, you can do this very easily. Plugins that support the Javascript API can be created by using their method on the main Bulma object. This method can take an object containing the options for that plugin. The documentation page for a plugin will explain the options it has available.
 
 For example, to create a new Modal you would do the following:
@@ -55,7 +55,7 @@ modal.open();
 
 You can find more information on how to use the Modal plugin by visiting the Modal documentation page.
 
-### Plugin Events
+## Plugin Events
 Some plugins will expose events at certain parts of their life. For example, the file plugin can emit an event when it has changed, and will pass the standard Javascript event object as a parameter. You can hook into a plugins event by calling the `on(eventName: String)` method on an instance of the plugin. For example:
 
 ```javascript
@@ -73,7 +73,7 @@ Some plugins will expose events at certain parts of their life. For example, the
 
 You can see what events a plugin has on the documentation page of each plugin. Most plugins will expose the `init` and `destored` events.
 
-### Grabbing a plugin instance
+## Grabbing a plugin instance
 In some situations you may want to attach events to a plugin instance, however, if the plugin has been created automatically for you via our DOM API you may be wondering how to attach such an event.
 
 Since Bulma 0.11 most plugins will save an instance of themselves to the parent element. You can then grab this element and pull the instance of the plugin, allowing you to then call the various API methods.

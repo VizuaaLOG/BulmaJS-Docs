@@ -14,7 +14,7 @@ prev:
 
 Installing BulmaJS couldn't easier. There are two ways to install BulmaJS in your project. The first is using the recommended ES6 way and the not-recommended pre-compiled way.
 
-### Install using ES6
+## Install using ES6
 The recommended way to install and use BulmaJS is by pulling it in via NPM:
 
 ```bash

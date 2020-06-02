@@ -22,7 +22,7 @@ This alert plugin creates a nice wrapper around the modal plugin already present
 
 If you do not need a cancel button, remove the option to set the cancel text!
 
-# Creating an alert dialog
+## Creating an alert dialog
 Creating an alert dialog is as easy as creating any other plugin instance within BulmaJS.
 
 @snippet
@@ -43,7 +43,7 @@ Creating an alert dialog is as easy as creating any other plugin instance within
 </script>
 @endsnippet
 
-# Multiple alert types
+## Multiple alert types
 Whether you're just informing your user of something, showing them a success message or alerting them to a problem, the alert plugin has you covered. Simply set the `type` option to `danger`, `warning`, `success` or `info` to change the look of the alert modal.
 
 @snippet
@@ -97,7 +97,7 @@ Whether you're just informing your user of something, showing them a success mes
 </script>
 @endsnippet
 
-# Confirm / Cancel events
+## Confirm / Cancel events
 What's the point in a popup if you can't use it for input? You can specify an `onClick` handler function for both the `confirm` and `cancel` buttons by providing the `onClick` property.
 
 @snippet
@@ -134,7 +134,7 @@ What's the point in a popup if you can't use it for input? You can specify an `o
 </script>
 @endsnippet
 
-# Custom button classes
+## Custom button classes
 
 <div class="tags has-addons">
     <span class="tag is-success">Since</span>
@@ -167,7 +167,7 @@ If you would like to adjust the style of the buttons, maybe changing them to inc
 </script>
 @endsnippet
 
-# Hiding the header
+## Hiding the header
 
 <div class="tags has-addons">
     <span class="tag is-success">Since</span>
@@ -203,10 +203,10 @@ You can choose to not show the alert's header by setting the `showHeader` option
 </script>
 @endsnippet
 
-# Closing via ESC or clicking outside
+## Closing via ESC or clicking outside
 The Alert plugin is a wrapper around the Modal plugin. This means if you pass `closable: true` it'll enable the closing features that Modals have. This includes a close button being added in the corner, the ability to close the modal when clicking outside and the ability to close the modal when pressing the `ESC` key.
 
-# Destroying/closing the alert
+## Destroying/closing the alert
 
 <div class="tags has-addons">
     <span class="tag is-success">Since</span>
