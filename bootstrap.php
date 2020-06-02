@@ -6,4 +6,5 @@ use TightenCo\Jigsaw\Jigsaw;
 /** @var $events \TightenCo\Jigsaw\Events\EventBus */
 
 $events->afterBuild(\App\Listeners\GenerateHeadingAnchors::class);
+$events->afterBuild(\App\Listeners\GenerateDocSearchMeta::class);
 $events->afterBuild(\App\Listeners\GenerateSitemap::class);

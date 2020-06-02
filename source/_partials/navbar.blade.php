@@ -43,6 +43,14 @@
                         </div>
                     </div>
                 @endif
+
+                <div class="navbar-item">
+                    <div class="field">
+                        <div class="control">
+                            <input type="text" name="search" id="search" class="input">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

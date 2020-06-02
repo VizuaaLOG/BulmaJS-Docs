@@ -14,6 +14,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="docsearch:language" content="en">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
         <link rel="stylesheet" href="{{ mix('css/main.css', 'assets/build') }}">
         <script>
             // Simple way allow documentation script examples, i.e. message, to execute
@@ -58,5 +61,15 @@
         </div>
 
         <script src="{{ mix('js/main.js', 'assets/build') }}"></script>
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+        <script type="text/javascript">
+            docsearch({
+                apiKey: '4604f719b2c677edf16642a7b1411386',
+                indexName: 'bulma_js',
+                inputSelector: '#search',
+                debug: true // Set debug to true if you want to inspect the dropdown
+            });
+        </script>
     </body>
 </html>

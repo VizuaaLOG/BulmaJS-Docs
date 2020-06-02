@@ -2,7 +2,7 @@
 
 return [
     'production' => false,
-    'baseUrl' => 'http://localhost:3000',
+    'baseUrl' => 'http://localhost:3000/',
     'collections' => [
         'posts' => [
             'path' => 'blog/{published_date|Y-m}/{filename}',

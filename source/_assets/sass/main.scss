@@ -216,3 +216,8 @@ div.code-toolbar > .toolbar {
         margin-bottom: 0;
     }
 }
+
+/* DocSearch */
+.algolia-autocomplete .algolia-docsearch-suggestion--highlight {
+  color: $primary;
+}
