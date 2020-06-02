@@ -47,7 +47,8 @@
                 <div class="navbar-item">
                     <div class="field">
                         <div class="control">
-                            <input type="text" name="search" id="search" class="input">
+                            <input type="text" name="search" id="search" class="input" placeholder="Search docs...">
+                            <div class="search-icon"></div>
                         </div>
                     </div>
                 </div>
