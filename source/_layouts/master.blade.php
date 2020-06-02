@@ -41,7 +41,8 @@
                 apiKey: '4604f719b2c677edf16642a7b1411386',
                 indexName: 'bulma_js',
                 inputSelector: '#search',
-                debug: true // Set debug to true if you want to inspect the dropdown
+                algoliaOptions: { 'facetFilters': ["version:" + getSelectedVersion()] },
+                debug: false // Set debug to true if you want to inspect the dropdown
             });
         </script>
     </body>

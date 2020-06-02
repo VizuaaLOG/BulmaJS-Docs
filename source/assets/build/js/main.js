@@ -13625,6 +13625,7 @@ function loadScript(url, onload, onerror) {
   script.onload = onload;
   document.head.appendChild(script);
 }
+window.getSelectedVersion = getSelectedVersion;
 
 /***/ }),
 
