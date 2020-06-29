@@ -2,7 +2,7 @@
 
 return array_merge([
     'production' => true,
-    'baseUrl' => 'https://bulmajs.tomerbe.co.uk',
+    'baseUrl' => 'https://bulmajs.tomerbe.co.uk/',
     'collections' => [
         'posts' => [
             'path' => 'blog/{published_date|Y-m}/{filename}',
