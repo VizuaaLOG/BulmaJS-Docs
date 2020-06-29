@@ -28,7 +28,7 @@
                     Supporters
                 </a>
                 
-                @if($page->getPath() != '')
+                @if(\Illuminate\Support\Str::contains($page->getPath(), 'docs'))
                     <div class="navbar-item">
                         <div class="field">
                             <div class="control">
