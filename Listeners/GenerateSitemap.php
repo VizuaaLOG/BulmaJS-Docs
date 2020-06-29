@@ -15,6 +15,9 @@ class GenerateSitemap {
         collect($jigsaw->getOutputPaths())
             ->each(function($path) use ($baseUrl, $sitemap) {
                 if(!Str::startsWith($path, '/assets')) {
+                    $path = str_replace('\\', '/', $path);
+                    $path = !Str::startsWith($path, '/') ? '/' . $path : $path;
+
                     $sitemap->addItem($baseUrl . $path, time(), Sitemap::DAILY);
                 }
             });
