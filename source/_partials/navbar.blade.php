@@ -24,8 +24,8 @@
                     Blog
                 </a>
 
-                <a class="navbar-item" href="/patrons">
-                    Patrons
+                <a class="navbar-item" href="/supporters">
+                    Supporters
                 </a>
                 
                 @if($page->getPath() != '')
