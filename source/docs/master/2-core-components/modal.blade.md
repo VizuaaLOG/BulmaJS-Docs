@@ -101,10 +101,7 @@ This will return the modal instance you created above. Do note that using the al
 
     <script>
         document.querySelector('#example-modal-button-2').addEventListener('click', function(e) {
-            var modalTwo = Bulma.create('modal', {
-                element: document.querySelector('#modal-example-2')
-            });
-
+            var modalTwo = Bulma('#modal-example-2').modal();
             modalTwo.open();
         });
     </script>
