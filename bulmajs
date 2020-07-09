@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * This script serves as a custom build tool for BulmaJS's documentation. It's intended to help simplify the recurring tasks
+ * associated with building, deploying and releasing new docs versions and is also used in any automated deployment
+ * configuration (if one exists).
+ */
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+
+$application = new Application();
+
+$application->add(new \App\Commands\PublishVersion());
+
+$application->run();
