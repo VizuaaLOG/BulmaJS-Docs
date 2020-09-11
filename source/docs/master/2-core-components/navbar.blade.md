@@ -25,6 +25,61 @@ The navbar plugin provides a range of different functionality for the Bulma navb
 
 An example of this plugin is being used on this documentation!
 
+## Dropdown support
+@tag(['type' => 'new', 'since' => '0.12'])@endtag
+Bulma has support for dropdowns within the navbar component, these can optionally have the `is-hoverable` class. However, if you would instead like the dropdowns to be toggled via a mouse click the Navbar plugin will automatically detect these and enable the click toggling.
+
+@snippet(['example' => true, 'language' => 'html'])
+<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+            <img src="/assets/images/bulmajs-logo-white.svg" width="112" height="28">
+        </a>
+
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+            data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item">
+                Home
+            </a>
+
+            <a class="navbar-item">
+                Documentation
+            </a>
+
+            <div class="navbar-item has-dropdown">
+                <a class="navbar-link">
+                    More
+                </a>
+
+                <div class="navbar-dropdown">
+                    <a class="navbar-item">
+                        About
+                    </a>
+                    <a class="navbar-item">
+                        Jobs
+                    </a>
+                    <a class="navbar-item">
+                        Contact
+                    </a>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item">
+                        Report an issue
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+@endsnippet
+
 ## Sticky navbar
 Since 0.6.1 Bulma has provided a `is-fixed-top` class for the navbar, along with `has-navbar-fixed-top` for the html/body elements. This allows you to fix the navbar to the top of the page when scrolling. However, what if your navbar is not directly at the top? You need to be able to offset the sticky feature.
 
@@ -34,7 +89,6 @@ You can control the offset of the navbar using `data-sticky-offset` this access 
 
 You can also add `data-sticky-shadow` to your navbar element, this will add the `has-shadow` class to the navbar when it becomes sticky.
 
-@tag(['type' => 'new', 'since' => '0.11'])@endtag
 If you ever need to dynamically enable/disable a navbar's sticky state, you can do so by using the `enableSticky` and `disableSticky` methods.
 
 @snippet(['example' => false, 'language' => 'javascript'])
@@ -61,7 +115,6 @@ When the navbar is hidden the `is-hidden-scroll` class is added to it, allowing 
 }
 ```
 
-@tag(['type' => 'new', 'since' => '0.11'])@endtag
 If you ever need to dynamically enable/disable a navbar's hide when scrolling state, you can do so by using the `enableHideOnScroll` and `disableHideOnScroll` methods.
 
 @snippet(['example' => false, 'language' => 'javascript'])
