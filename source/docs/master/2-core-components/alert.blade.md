@@ -29,8 +29,8 @@ next:
     - Dropdown
     - ../dropdown
 prev:
-    - Creating a plugin
-    - ../../1-getting-started/4-creating-a-plugin
+    - Core API
+    - ../../1-getting-started/5-core-api
 ---
 
 There's times where you need to alert something to your visitor, maybe you want to warn them before they delete a record. You could use the browser's built-in `alert` method, but that doesn't follow your branding does it?

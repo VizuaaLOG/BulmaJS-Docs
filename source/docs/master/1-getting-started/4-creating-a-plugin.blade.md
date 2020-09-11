@@ -5,8 +5,8 @@ category: 'Getting started'
 section: 'body'
 version: 'master'
 next:
-    - Alert
-    - ../../2-core-components/alert
+    - Core API
+    - ../5-core-api
 prev:
     - Usage
     - ../3-usage
