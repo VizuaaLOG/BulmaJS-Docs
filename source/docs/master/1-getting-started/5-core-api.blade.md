@@ -19,9 +19,9 @@ This method allows you to trigger the parsing of the data attributes for all of 
 
 Should you need the automatic calling of this method when BulmaJS loads disabling, you can do so by specifying the `autoParseDocument` option within the global `bulmaOptions` object. This should be defined before BulmaJS has loaded.
 
-
 ```javascript
-window.bulmaOptions {
+window.bulmaOptions = {
+    ...
     autoParseDocument: false
 }
 ```

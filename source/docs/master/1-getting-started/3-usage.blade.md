@@ -123,3 +123,16 @@ Calling the `.data` method will lookup the key, in this case the plugin's unique
 This syntax works with the majority of the core plugins where it makes sense, if you think a plugin is incorrectly missing this feature please open an issue or a PR!
 
 If your using `Bulma.create` it'll not create this reference. It's more of a syntax sugar for instances that are automatically created as using `Bulma.create` will provide you with the instance as it has always done.
+
+## Detecting when BulmaJS has loaded
+@tag(['type' => 'new', 'since' => '0.12'])@endtag
+If you would like to load BulmaJS asyncronously you can define the `onLoaded` function within the global `bulmaOptions` object. This method will be executed once BulmaJS has been loaded on the page and the `DOMContentLoaded` event has been triggered.
+
+```javascript
+window.bulmaOptions = {
+    ...
+    onLoaded: function() {
+        alert('Hello BulmaJS');
+    }
+};
+```
