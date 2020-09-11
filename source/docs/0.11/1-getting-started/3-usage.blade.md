@@ -3,7 +3,7 @@ extends: _layouts.docs
 title: Usage
 category: 'Getting started'
 section: 'body'
-version: 'master'
+version: '0.11'
 next:
     - Creating a plugin
     - ../4-creating-a-plugin

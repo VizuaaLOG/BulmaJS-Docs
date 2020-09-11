@@ -3,7 +3,7 @@ extends: _layouts.docs
 title: File
 category: 'Core components'
 section: 'body'
-version: 'master'
+version: '0.11'
 stats:
     version: 0.1.0
     data_api: true

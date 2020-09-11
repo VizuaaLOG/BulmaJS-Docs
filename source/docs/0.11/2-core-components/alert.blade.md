@@ -3,7 +3,7 @@ extends: _layouts.docs
 title: Alert
 category: 'Core components'
 section: 'body'
-version: 'master'
+version: '0.11'
 stats:
     version: 0.8.0
     data_api: false

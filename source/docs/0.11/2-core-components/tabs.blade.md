@@ -3,7 +3,7 @@ extends: _layouts.docs
 title: Tabs
 category: 'Core components'
 section: 'body'
-version: 'master'
+version: '0.11'
 stats:
     version: 0.4.0
     data_api: true

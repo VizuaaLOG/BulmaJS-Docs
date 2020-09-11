@@ -3,7 +3,7 @@ extends: _layouts.docs
 title: Creating a plugin
 category: 'Getting started'
 section: 'body'
-version: 'master'
+version: '0.11'
 next:
     - Alert
     - ../../2-core-components/alert

@@ -3,7 +3,7 @@ extends: _layouts.docs
 title: Introduction
 category: 'Getting started'
 section: 'body'
-version: 'master'
+version: '0.11'
 next:
     - Installation
     - ../2-installation
