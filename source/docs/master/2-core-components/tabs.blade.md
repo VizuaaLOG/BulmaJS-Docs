@@ -17,12 +17,9 @@ events:
         - Destroyed
         - on('destroyed')
         - Called when the tabs instance is destroyed.
-next:
-    - Accordion
-    - ../../3-wikiki-extensions/accordion
 prev:
-    - Notification
-    - ../notification
+    - Panel Tabs
+    - ../panel-tabs
 ---
 
 <style>
