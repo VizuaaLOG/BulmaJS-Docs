@@ -7,6 +7,6 @@ return array (
     2 => '0.11',
     3 => '0.10',
   ),
-  'released_version' => '0.12.0',
+  'released_version' => '0.12.1',
   'documentation_version' => '0.12',
 );
