@@ -14,5 +14,6 @@ $application = new Application();
 
 $application->add(new \App\Commands\PublishVersion());
 $application->add(new \App\Commands\FetchVersions());
+$application->add(new \App\Commands\Deploy());
 
 $application->run();
