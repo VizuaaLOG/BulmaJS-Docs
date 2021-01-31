@@ -15,3 +15,5 @@ yarn-error.log
 /source/assets/build/css/
 /source/assets/build/fonts/
 /source/assets/build/js/
+
+.env-deployment

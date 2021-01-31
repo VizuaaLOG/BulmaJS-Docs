@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use DOMDocument;
+use IvoPetkov\HTML5DOMDocument;
 use DOMXPath;
 use TightenCo\Jigsaw\Jigsaw;
 use Illuminate\Support\Str;
@@ -14,8 +14,8 @@ class GenerateHeadingAnchors {
             if(!Str::contains($outputPath, 'assets')) {
                 $currFile = ltrim($outputPath, '/') . '/index.html';
                 $htmlString = $jigsaw->readOutputFile($currFile);
-                $html = new DOMDocument;
-                $html->loadHTML($htmlString);
+                $html = new HTML5DOMDocument;
+                $html->loadHTML($htmlString, HTML5DOMDocument::ALLOW_DUPLICATE_IDS);
                 $xpath = new DOMXPath($html);
 
                 $headings = $xpath->query('//h1 | //h2 | //h3');

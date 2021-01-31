@@ -2,9 +2,15 @@
 
 namespace App\Commands;
 
+use Madnest\Madzipper\Madzipper;
+use RecursiveIteratorIterator;
+use RecursiveDirectoryIterator;
+use ZipArchive;
 use Carbon\Carbon;
 use phpseclib3\Crypt\PublicKeyLoader;
 use phpseclib3\Net\SSH2;
+use phpseclib3\Net\SFTP;
+use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 use \Symfony\Component\Console\Command\Command;
@@ -16,6 +22,15 @@ class Deploy extends Command
     /** @var string */
     protected static $defaultName = 'deploy';
 
+    private $files = [
+        'assets',
+        'blog',
+        'docs',
+        'supporters',
+        'index.html',
+        'sitemap.xml',
+    ];
+
     protected function configure()
     {
         $this->setDescription('Deploy the built documentation via SSH to the given host/folder. Note: this will pull down the latest master version of the docs and then begin running commands')
@@ -26,45 +41,60 @@ class Deploy extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('<info>////////////////////////////////////////////</info>');
-        $output->writeln('<info>/// Deploying to server as defined in .env-deployment ///</info>');
-        $output->writeln('<info>////////////////////////////////////////////</info>');
+        $titleSection = $output->section();
+        $progressSection = $output->section();
 
-        $ssh = new SSH2('host');
-        $key = PublicKeyLoader::load(file_get_contents('path_to_private_key'));
-        $targetDirectory = 'target_directory';
-
-        if(!$ssh->login('bulmajs', $key)) {
-            $output->writeln('Error connecting!');
-            return 1;
+        $titleSection->writeln('<info>///////// Deploying to server as defined in .env-deployment //////////</info>');
+        if(!is_dir(__DIR__ . '/../build_production')) {
+            $progressSection->writeln('<error>Please run \'php bulmajs fetch:versions\' and \'npm run production\' first.');
+            return Command::FAILURE;
         }
 
-        $now = Carbon::now()->unix();
-//        $now = 'debug';
-        $ssh->exec("rm -rf $targetDirectory/$now");
+        $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__ . '/../', '.env-deployment');
+        $dotenv->load();
 
-        // TODO: Change this to instead build everything locally, ZIP up the folder and upload / unzip that. This current approach is unreliable.
+        $ssh = new SSH2($_ENV['HOST']);
+        $sftp = new SFTP($_ENV['HOST']);
+        $key = PublicKeyLoader::load(file_get_contents($_ENV['KEY_PATH']));
+        $targetDirectory = $_ENV['TARGET_DIR'];
 
-        // Create a new directory
-        $output->writeln("<info>Creating new directory called $now</info>");
-        $output->write($ssh->exec("mkdir $targetDirectory/$now"));
+        if(!$ssh->login($_ENV['USER'], $key) || !$sftp->login($_ENV['USER'], $key)) {
+            $progressSection->writeln('<error>Error connecting!</error>');
+            return Command::FAILURE;
+        }
 
-        $output->writeln('<info>Cloning the latest master branch...</info>');
-        $output->write($ssh->exec("git clone --depth=1 https://github.com/VizuaaLOG/BulmaJS-Docs $targetDirectory/$now"));
+        $fetchCommand = $this->getApplication()->find('fetch:versions');
 
-        $output->writeln('<info>Running compoer install...</info>');
-        $output->write($ssh->exec("cd $targetDirectory/$now && composer install"));
+        $progressSection->overwrite('<info>Creating zip...</info>');
+        $this->buildZip();
 
-        $output->writeln('<info>Running NPM install...</info>');
-        $output->write($ssh->exec("cd $targetDirectory/$now && npm install"));
+        $progressSection->overwrite('<info>Uploading zip...</info>');
+        $sftp->delete($targetDirectory . 'build.zip');
+        $sftp->put($targetDirectory . 'build.zip', __DIR__ . '/../build.zip', SFTP::SOURCE_LOCAL_FILE);
 
-        $output->writeln('<info>Fetching Bulma versions...</info>');
-        $output->write($ssh->exec("cd $targetDirectory/$now && php bulmajs fetch:versions"));
+        $progressSection->overwrite('<info>Removing current version...</info>');
+        foreach($this->files as $file) {
+            $sftp->delete($targetDirectory . $file);
+        }
 
-        $output->writeln('<info>Building docs...</info>');
-        $output->write($ssh->exec("cd $targetDirectory/$now && npm run production"));
-        $output->write($ssh->exec("cd $targetDirectory/$now && ./vendor/bin/jigsaw build production"));
+        $progressSection->overwrite('<info>Unzipping...</info>');
+        $ssh->exec("cd $targetDirectory && unzip build.zip");
+        $sftp->delete($targetDirectory . 'build.zip');
+
+        $progressSection->overwrite('<info>Cleaning up...</info>');
+        @unlink(__DIR__ . '/../build.zip');
+
+        $progressSection->overwrite('<info>Deployment complete</info>');
 
         return 0;
+    }
+
+    private function buildZip()
+    {
+        $zipper = new Madzipper;
+
+        $zipper->make(__DIR__ . '/../build.zip')
+            ->add(__DIR__ . '/../build_production')
+            ->close();
     }
 }

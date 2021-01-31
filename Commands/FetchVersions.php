@@ -21,15 +21,21 @@ class FetchVersions extends Command
             ->setHelp('
                 Fetches all branches for defined versions and places them in the bulmajs assets directory.
                     --fresh - If provided any existing asset files will be deleted, otherwise they\'ll be ignored
+                    --silent - Hide all output
             ')
-            ->addOption('--fresh');
+            ->addOption('--fresh')
+            ->addOption('--silent');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('<info>////////////////////////////////////////////</info>');
-        $output->writeln('<info>/// FETCHING VERSIONS DEFINED IN versions.config.php ///</info>');
-        $output->writeln('<info>////////////////////////////////////////////</info>');
+        $isSilent = $input->getOption('silent');
+
+        if(!$isSilent) {
+            $output->writeln('<info>////////////////////////////////////////////</info>');
+            $output->writeln('<info>/// FETCHING VERSIONS DEFINED IN versions.config.php ///</info>');
+            $output->writeln('<info>////////////////////////////////////////////</info>');
+        }
 
         $destination = __DIR__ . '/../source/assets/bulmajs/';
 
@@ -42,13 +48,17 @@ class FetchVersions extends Command
         }
 
         foreach($config['versions'] as $version) {
-            $output->writeln('');
-            $output->writeln('<info>Fetching version ' . $version . '</info>');
+            if(!$isSilent) {
+                $output->writeln('');
+                $output->writeln('<info>Fetching version ' . $version . '</info>');
+            }
 
             $outputDir = $destination . $version;
 
             if($files->isDirectory($outputDir)) {
-                $output->writeln('Skipping ' . $version . ' already cloned.');
+                if(!$isSilent) {
+                    $output->writeln('Skipping ' . $version . ' already cloned.');
+                }
                 continue;
             }
 
@@ -59,6 +69,10 @@ class FetchVersions extends Command
             exec($command);
         }
 
-        $output->writeln('<info>Completed</info>');
+        if(!$isSilent) {
+            $output->writeln('<info>Completed</info>');
+        }
+
+        return 0;
     }
 }

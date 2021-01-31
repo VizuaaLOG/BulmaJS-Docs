@@ -2,8 +2,7 @@
 
 namespace App\Listeners;
 
-use DOMDocument;
-use DOMXPath;
+use IvoPetkov\HTML5DOMDocument;
 use TightenCo\Jigsaw\Jigsaw;
 use Illuminate\Support\Str;
 
@@ -14,8 +13,8 @@ class GenerateDocSearchMeta {
             if(!Str::contains($outputPath, 'assets')) {
                 $currFile = ltrim($outputPath, '/') . '/index.html';
                 $htmlString = $jigsaw->readOutputFile($currFile);
-                $html = new DOMDocument;
-                $html->loadHTML($htmlString);
+                $html = new HTML5DOMDocument;
+                $html->loadHTML($htmlString, HTML5DOMDocument::ALLOW_DUPLICATE_IDS);
 
                 if(!Str::contains($outputPath, 'blog') && Str::contains($outputPath, '/docs')) {
                     $version = [];
@@ -41,7 +40,10 @@ class GenerateDocSearchMeta {
 
                 $meta->appendChild($nameAttr);
                 $meta->appendChild($contentAttr);
-                $head->appendChild($meta);
+
+                if(!is_null($head)) {
+                    $head->appendChild($meta);
+                }
 
                 $jigsaw->writeOutputFile($currFile, $html->saveHTML());
             }
