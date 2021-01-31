@@ -2,7 +2,7 @@
 
 namespace App\Commands;
 
-use Madnest\Madzipper\Madzipper;
+use Chumper\Zipper\Zipper;
 use RecursiveIteratorIterator;
 use RecursiveDirectoryIterator;
 use ZipArchive;
@@ -50,7 +50,7 @@ class Deploy extends Command
             return Command::FAILURE;
         }
 
-        $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__ . '/../', '.env-deployment');
+        $dotenv = \Dotenv\Dotenv::create(__DIR__ . '/../', '.env-deployment');
         $dotenv->load();
 
         $ssh = new SSH2($_ENV['HOST']);
@@ -91,7 +91,7 @@ class Deploy extends Command
 
     private function buildZip()
     {
-        $zipper = new Madzipper;
+        $zipper = new Zipper;
 
         $zipper->make(__DIR__ . '/../build.zip')
             ->add(__DIR__ . '/../build_production')
